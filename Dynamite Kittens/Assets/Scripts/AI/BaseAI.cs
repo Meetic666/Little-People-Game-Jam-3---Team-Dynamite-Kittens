@@ -116,21 +116,24 @@ public class BaseAI : MonoBehaviour
 
 	public void Damage(float dmg = 0)
 	{
-		if(dmg == 0)
+		if(m_CurrentState != ActionState.e_Idle)
 		{
-			m_Health = 0;
+			if(dmg == 0)
+			{
+				m_Health = 0;
+			}
+			else
+			{
+				m_Health -= dmg;
+			}
+			
+			if(m_Health <= 0)
+			{
+				m_CurrentState = ActionState.e_Dead;
+			}
+			
+			VirtualDamage ();
 		}
-		else
-		{
-			m_Health -= dmg;
-		}
-
-		if(m_Health <= 0)
-		{
-			m_CurrentState = ActionState.e_Dead;
-		}
-
-		VirtualDamage ();
 	}
 
 	void OnCollisionEnter2D(Collision2D other)
