@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour
 	bool m_IsGrounded = false;
 
 	PlayerInput m_Input;
-	CharacterController m_Controller;
 	Animator m_Animator;
 
 	public Vector2 CurrentSpeed
@@ -29,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
 	void Start () 
 	{
 		m_Input = GetComponent<PlayerInput>();
-		m_Controller = GetComponent<CharacterController>();
 		m_Animator = GetComponent<Animator>();
 	}
 	
@@ -51,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
 			if(m_Input.Jump)
 			{
 				m_CurrentSpeed.y = m_JumpSpeed;
+				m_IsGrounded = false;
 			}
 		}
 		else
@@ -58,21 +57,20 @@ public class PlayerMovement : MonoBehaviour
 			m_CurrentSpeed.y += m_Gravity * Time.deltaTime;
 		}
 
-		m_IsGrounded = (m_Controller.Move (m_CurrentSpeed * Time.deltaTime) & CollisionFlags.Below) != 0;
+		rigidbody2D.velocity = m_CurrentSpeed;
 
-		m_Animator.SetFloat("Horizontal Speed", m_CurrentSpeed.x);
-		m_Animator.SetFloat ("Vertical Speed", m_CurrentSpeed.y);
+		m_Animator.SetFloat("Horizontal Speed", rigidbody2D.velocity.x);
+		m_Animator.SetFloat ("Vertical Speed", rigidbody2D.velocity.y);
 	}
 
-	void OnControllerColliderHit(ControllerColliderHit hit)
+	void OnCollisionEnter2D(Collision2D collision)
 	{
-		if(hit.collider.tag == "Level")
+		if(collision.gameObject.tag == "Level")
 		{
-
-		}
-		else if(hit.collider.tag == "Enemy")
-		{
-
+			if(collision.contacts[0].normal.y > 0.0f)
+			{
+				m_IsGrounded = true;
+			}
 		}
 	}
 }
