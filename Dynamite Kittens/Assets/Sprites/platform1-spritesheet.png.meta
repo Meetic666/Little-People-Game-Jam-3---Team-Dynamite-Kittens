@@ -1,11 +1,10 @@
 fileFormatVersion: 2
-guid: 166d9f01a31c2564f9eadcca07a6742a
+guid: d95e795bbc82c8d4184c455a3a425782
 TextureImporter:
-  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -24,24 +23,171 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 1024
   textureSettings:
-    filterMode: -1
-    aniso: -1
+    filterMode: 2
+    aniso: 1
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 8
-  buildTargetSettings: []
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: platform1-Left
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: platform1-Middle
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: platform1-Right
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: platform1-Eye_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 122
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: platform1-Eye_1
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 122
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: platform1-Eye_2
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 122
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: platform1-Eye_3
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 122
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: platform1-Eye_Pulsating_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 84
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: platform1-Eye_Pulsating_1
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 84
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: platform1-Mouth_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 46
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: platform1-Mouth_1
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 46
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: platform1-Mouth_2
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 46
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: platform1-Mouth_Ecstatic_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 8
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: platform1-Mouth_Ecstatic_1
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 8
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: platform1-Mouth_Ecstatic_2
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 8
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: platform1-Mouth_Ecstatic_3
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 8
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
   spritePackingTag: 
   userData: 
