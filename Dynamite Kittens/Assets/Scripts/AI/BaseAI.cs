@@ -30,14 +30,17 @@ public class BaseAI : MonoBehaviour
 			case ActionState.e_Moving:
 			{
 				Move ();
+				break;
 			}
 			case ActionState.e_Attacking:
 			{
 				Attack();
+				break;
 			}
 			case ActionState.e_Dead:
 			{
 				Died();
+				break;
 			}
 		}
 	}
