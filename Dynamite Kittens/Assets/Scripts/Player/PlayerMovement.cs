@@ -36,7 +36,9 @@ public class PlayerMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		m_CurrentSpeed.x = Mathf.Lerp(m_CurrentSpeed.x, m_MoveSpeed * m_Input.MoveHorizontal, m_Acceleration * Time.deltaTime);
+		Vector2 newVelocity = rigidbody2D.velocity;
+
+		newVelocity.x = Mathf.Lerp(newVelocity.x, m_MoveSpeed * m_Input.MoveHorizontal, m_Acceleration * Time.deltaTime);
 
 		if((transform.lossyScale.x > 0.0f && m_CurrentSpeed.x < 0.0f)
 		   || (transform.lossyScale.x < 0.0f && m_CurrentSpeed.x > 0.0f))
@@ -46,33 +48,15 @@ public class PlayerMovement : MonoBehaviour
 			transform.localScale = newScale;
 		}
 
-		if(m_IsGrounded)
+		if(Mathf.Abs (rigidbody2D.velocity.y) < 0.1f)
 		{
 			if(m_Input.Jump)
 			{
-				m_CurrentSpeed.y = m_JumpSpeed;
+				newVelocity.y = m_JumpSpeed;
 			}
 		}
-		else
-		{
-			m_CurrentSpeed.y += m_Gravity * Time.deltaTime;
-		}
-		
-		Vector2 position = new Vector2(transform.position.x, transform.position.y);
 
-		RaycastHit2D hitInfo = Physics2D.Raycast(position, -Vector2.up, m_GroundDetectionDistance, m_GroundLayers.value);
-
-		if(hitInfo.collider != null
-		   && hitInfo.collider.tag == "Level")
-		{
-			m_IsGrounded = true;
-		}
-		else
-		{
-			m_IsGrounded = false;
-		}
-
-		rigidbody2D.velocity = m_CurrentSpeed;
+		rigidbody2D.velocity = newVelocity;
 
 		m_Animator.SetFloat("Horizontal Speed", rigidbody2D.velocity.x);
 		m_Animator.SetFloat ("Vertical Speed", rigidbody2D.velocity.y);
