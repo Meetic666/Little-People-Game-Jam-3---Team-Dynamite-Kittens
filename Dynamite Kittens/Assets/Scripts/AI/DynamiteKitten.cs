@@ -31,7 +31,8 @@ public class DynamiteKitten : BaseAI
 
 	protected override void VirtualAttack()
 	{
-		m_FuseLit = true;	}
+		m_FuseLit = true;	
+	}
 
 	protected override void VirtualDied()
 	{
@@ -42,6 +43,7 @@ public class DynamiteKitten : BaseAI
 		}
 
 		gameObject.GetComponent<BodyExplosion> ().Explode ();
+		m_CurrentState = ActionState.e_Idle;
 	}
 
 	protected override void VirtualSwitchDirection()

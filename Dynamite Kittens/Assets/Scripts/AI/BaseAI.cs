@@ -9,7 +9,7 @@ public class BaseAI : MonoBehaviour
 	public float m_MovementSpeed = 0.1f;
 	public float m_JumpingSpeed = 0.3f;
 
-	protected BoxCollider m_AttackBox;
+	protected BoxCollider2D m_AttackBox;
 
 	protected ActionState m_CurrentState = ActionState.e_Moving;
 	protected enum ActionState
@@ -27,8 +27,8 @@ public class BaseAI : MonoBehaviour
 
 	void Start()
 	{
-		gameObject.AddComponent<BoxCollider>();
-		m_AttackBox = gameObject.GetComponent<BoxCollider> ();
+		gameObject.AddComponent<BoxCollider2D>();
+		m_AttackBox = gameObject.GetComponent<BoxCollider2D> ();
 		m_AttackBox.center = transform.right;
 		m_AttackBox.isTrigger = true;
 	}
@@ -51,7 +51,6 @@ public class BaseAI : MonoBehaviour
 			case ActionState.e_Dead:
 			{
 				Died();
-				m_CurrentState = ActionState.e_Idle;
 				break;
 			}
 			default:
@@ -138,7 +137,7 @@ public class BaseAI : MonoBehaviour
 		}
 	}
 
-	void OnCollisionEnter(Collision other)
+	void OnCollisionEnter2D(Collision2D other)
 	{
 		if(other.gameObject.GetComponent<PlayerMovement>() != null)
 		{
@@ -149,7 +148,6 @@ public class BaseAI : MonoBehaviour
 		}
 		else if(other.gameObject.tag == "Edge")
 		{
-
 			SwitchDirection();
 		}
 	}
