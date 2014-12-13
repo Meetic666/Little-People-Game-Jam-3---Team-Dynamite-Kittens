@@ -23,6 +23,15 @@ public class BaseAI : MonoBehaviour
 		get{ return m_MovementSpeed; }
 	}
 
+	void Start()
+	{
+		if(gameObject.GetComponent<BoxCollider>() == null)
+		{
+			m_AttackBox = gameObject.AddComponent<BoxCollider>();
+			m_AttackBox.center = transform.right * m_MovementSpeed;
+		}
+	}
+
 	void Update()
 	{
 		switch(m_CurrentState)
@@ -42,7 +51,11 @@ public class BaseAI : MonoBehaviour
 				Died();
 				break;
 			}
+			default:
+				break;
 		}
+
+		VirtualUpdate ();
 	}
 
 	void Move()
@@ -54,23 +67,18 @@ public class BaseAI : MonoBehaviour
 
 	void Attack()
 	{
-		if(m_AttackBox == null) // Creates attacking box
-		{
-			m_AttackBox = gameObject.AddComponent<BoxCollider>();
-		}
-
-		VirtualAttack (); //Attack behaviours unique to AI are applied
-
-		Destroy (GetComponent<BoxCollider> ()); //Destroys attacking box
-		m_AttackBox = null;
-
-		m_CurrentState = ActionState.e_Moving; // Goes back to moving state
+		VirtualAttack ();
 	}
 
 	void Died()
 	{
 		VirtualDied ();
 		m_CurrentState = ActionState.e_Idle;
+	}
+
+	protected virtual void VirtualUpdate()
+	{
+
 	}
 
 	protected virtual void VirtualMove()
@@ -84,6 +92,11 @@ public class BaseAI : MonoBehaviour
 	}
 
 	protected virtual void VirtualDied()
+	{
+
+	}
+
+	protected virtual void SwitchDirection()
 	{
 
 	}
@@ -113,7 +126,8 @@ public class BaseAI : MonoBehaviour
 		}
 		else if(other.gameObject.tag == "Edge")
 		{
-			transform.Rotate(transform.up, 180);
+			m_MovementSpeed *= -1;
+			SwitchDirection();
 		}
 	}
 }
