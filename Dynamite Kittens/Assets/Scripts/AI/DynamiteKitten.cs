@@ -5,6 +5,7 @@ using System.Collections;
 public class DynamiteKitten : BaseAI 
 {
 	bool m_FuseLit = false;
+	public Vector2 m_KnockBackForce;
 
 	public float m_FuseTimer = 2.5f;
 	public float m_ExplosionRangeMultiplier = 2;
@@ -24,11 +25,6 @@ public class DynamiteKitten : BaseAI
 		}
 	}
 
-	protected override void VirtualMove()
-	{
-
-	}
-
 	protected override void VirtualAttack()
 	{
 		m_FuseLit = true;	
@@ -46,8 +42,9 @@ public class DynamiteKitten : BaseAI
 		m_CurrentState = ActionState.e_Idle;
 	}
 
-	protected override void VirtualSwitchDirection()
+	protected override void VirtualDamage()
 	{
-
+		rigidbody2D.AddForce (m_KnockBackForce, ForceMode2D.Impulse);
+		m_CurrentState = ActionState.e_Attacking;
 	}
 }

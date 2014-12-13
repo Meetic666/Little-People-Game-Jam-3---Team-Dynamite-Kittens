@@ -29,13 +29,11 @@ public class BaseAI : MonoBehaviour
 	{
 		gameObject.AddComponent<BoxCollider2D>();
 		m_AttackBox = gameObject.GetComponent<BoxCollider2D> ();
-		m_AttackBox.center = transform.right;
 		m_AttackBox.isTrigger = true;
 	}
 
 	void Update()
 	{
-		Debug.Log (m_CurrentState.ToString ());
 		switch(m_CurrentState)
 		{
 			case ActionState.e_Moving:
@@ -82,16 +80,6 @@ public class BaseAI : MonoBehaviour
 	{
 		m_MovementSpeed *= -1;
 
-		if(m_IsMovingRight)
-		{
-			m_AttackBox.center = -transform.right;
-		}
-		else
-		{
-			m_AttackBox.center = transform.right;
-		}
-
-
 		VirtualSwitchDirection ();
 	}
 
@@ -120,6 +108,11 @@ public class BaseAI : MonoBehaviour
 
 	}
 
+	protected virtual void VirtualDamage()
+	{
+
+	}
+
 	public void Damage(float dmg = 0)
 	{
 		if(dmg == 0)
@@ -135,6 +128,8 @@ public class BaseAI : MonoBehaviour
 		{
 			m_CurrentState = ActionState.e_Dead;
 		}
+
+		VirtualDamage ();
 	}
 
 	void OnCollisionEnter2D(Collision2D other)
