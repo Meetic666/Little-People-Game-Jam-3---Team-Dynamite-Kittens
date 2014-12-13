@@ -27,7 +27,7 @@ public class BaseAI : MonoBehaviour
 
 	void Start()
 	{
-		gameObject.AddComponent<BoxCollider2D>();
+		//gameObject.AddComponent<BoxCollider2D>();
 		m_AttackBox = gameObject.GetComponent<BoxCollider2D> ();
 		m_AttackBox.isTrigger = true;
 	}
@@ -141,9 +141,17 @@ public class BaseAI : MonoBehaviour
 				m_CurrentState = ActionState.e_Attacking;
 			}
 		}
-		else if(other.gameObject.tag == "Edge")
-		{
-			SwitchDirection();
-		}
+        else if (other.gameObject.tag == "Edge")
+        {
+            SwitchDirection();
+        }
 	}
+
+    //void OnTriggerEnter2D(Collider2D collider)
+    //{
+    //    if (collider.gameObject.tag == "Edge")
+    //    {
+    //        SwitchDirection();
+    //    }
+    //}
 }
