@@ -3,11 +3,11 @@ using System.Collections;
 
 public class BaseAI : MonoBehaviour
 {
-	float m_Health = 10;
-	float m_MovementSpeed = 0.1f;
-	float m_JumpingSpeed = 0.3f;
+	public float m_Health = 10;
+	public float m_MovementSpeed = 0.1f;
+	public float m_JumpingSpeed = 0.3f;
 
-	protected BoxCollider m_AttackBox;
+	protected BoxCollider2D m_AttackBox;
 
 	protected ActionState m_CurrentState = ActionState.e_Idle;
 	protected enum ActionState
@@ -25,11 +25,10 @@ public class BaseAI : MonoBehaviour
 
 	void Start()
 	{
-		if(gameObject.GetComponent<BoxCollider>() == null)
-		{
-			m_AttackBox = gameObject.AddComponent<BoxCollider>();
-			m_AttackBox.center = transform.right * m_MovementSpeed;
-		}
+		gameObject.AddComponent<BoxCollider2D>();
+		m_AttackBox = gameObject.GetComponent<BoxCollider2D> ();
+		m_AttackBox.center = transform.right;
+		m_AttackBox.isTrigger = true;
 	}
 
 	void Update()
@@ -118,7 +117,7 @@ public class BaseAI : MonoBehaviour
 		}
 	}
 
-	void OnCollisionEnter(Collision other)
+	void OnTriggerEnter(Collider other)
 	{
 		if(other.gameObject.GetComponent<PlayerMovement>() != null)
 		{

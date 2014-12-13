@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
+[RequireComponent(typeof(BaseAI))]
 public class DynamiteKitten : BaseAI 
 {
 	bool m_FuseLit = false;
 	float m_FuseTimer = 2.5f;
 	float m_ExplosionRangeMultiplier = 2;
+	float m_DismembermentForce = 1;
+
+	List<GameObject> m_Children = new List<GameObject>();
 
 	protected override void VirtualUpdate()
 	{
@@ -38,7 +43,14 @@ public class DynamiteKitten : BaseAI
 			m_AttackBox.size *= m_ExplosionRangeMultiplier;
 		}
 		
-		//TODO: Detach all children, apply rigidBodies and have them explode
+		Destroy (gameObject.GetComponent<Rigidbody> ());
+		for(int i = 0; i < transform.childCount; i++)
+		{
+			m_Children.Add(transform.GetChild(i).gameObject);
+			transform.GetChild(i).gameObject.AddComponent<Rigidbody2D>();
+			transform.GetChild(i).gameObject.rigidbody.AddForce(transform.up * m_DismembermentForce, ForceMode.Impulse);
+		}
+		transform.DetachChildren ();
 	}
 
 	protected override void SwitchDirection()
