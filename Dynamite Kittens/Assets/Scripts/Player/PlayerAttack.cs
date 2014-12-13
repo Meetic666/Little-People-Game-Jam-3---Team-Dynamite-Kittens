@@ -9,16 +9,20 @@ public class PlayerAttack : MonoBehaviour
 
 	PlayerInput m_Input;
 	PlayerMovement m_Movement;
+	Animator m_Animator;
 
 	void Start()
 	{
 		m_Input = GetComponent<PlayerInput>();
 		m_Movement = GetComponent<PlayerMovement>();
+		m_Animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
+		m_Animator.SetBool("Attack", m_Input.Attack);
+
 		if(m_Input.Attack)
 		{
 			Attack();
