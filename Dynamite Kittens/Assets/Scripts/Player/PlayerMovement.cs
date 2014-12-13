@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
 	public float m_Acceleration;
 	public float m_MoveSpeed;
 	public float m_JumpSpeed;
+	public float m_GroundDetectionDistance;
+	public LayerMask m_GroundLayers;
 
 	Vector2 m_CurrentSpeed;
 
@@ -49,28 +51,30 @@ public class PlayerMovement : MonoBehaviour
 			if(m_Input.Jump)
 			{
 				m_CurrentSpeed.y = m_JumpSpeed;
-				m_IsGrounded = false;
 			}
 		}
 		else
 		{
 			m_CurrentSpeed.y += m_Gravity * Time.deltaTime;
 		}
+		
+		Vector2 position = new Vector2(transform.position.x, transform.position.y);
+
+		RaycastHit2D hitInfo = Physics2D.Raycast(position, -Vector2.up, m_GroundDetectionDistance, m_GroundLayers.value);
+
+		if(hitInfo.collider != null
+		   && hitInfo.collider.tag == "Level")
+		{
+			m_IsGrounded = true;
+		}
+		else
+		{
+			m_IsGrounded = false;
+		}
 
 		rigidbody2D.velocity = m_CurrentSpeed;
 
 		m_Animator.SetFloat("Horizontal Speed", rigidbody2D.velocity.x);
 		m_Animator.SetFloat ("Vertical Speed", rigidbody2D.velocity.y);
-	}
-
-	void OnCollisionEnter2D(Collision2D collision)
-	{
-		if(collision.gameObject.tag == "Level")
-		{
-			if(collision.contacts[0].normal.y > 0.0f)
-			{
-				m_IsGrounded = true;
-			}
-		}
 	}
 }
