@@ -132,13 +132,20 @@ public class LevelElement : MonoBehaviour
 
     private void RemoveObjectFromList(GameObject obj)
     {
-        foreach (GameObject interactingObject in m_InteractingObjects)
+        m_InteractingObjects.Remove(obj);
+    }
+
+    private void CheckIfInteractingObjectIsGore(GameObject obj)
+    {
+        if (obj.tag == "Gore" && GoreCanInteractWith == true)
         {
-            if (interactingObject == obj)
-            {
-                m_InteractingObjects.Remove(obj);
-            }
+            ChangeState(EmotionalState.Insane);
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        CheckIfInteractingObjectIsGore(collider.gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -161,10 +168,7 @@ public class LevelElement : MonoBehaviour
             ChangeState(EmotionalState.Ecstatic);
         }
 
-        if (collision.gameObject.tag == "Gore" && GoreCanInteractWith == true)
-        {
-            ChangeState(EmotionalState.Insane);
-        }
+        CheckIfInteractingObjectIsGore(collision.gameObject);
     }
 
     void OnCollisionExit2D(Collision2D collision)
