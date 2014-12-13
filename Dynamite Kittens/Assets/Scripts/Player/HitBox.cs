@@ -15,7 +15,7 @@ public class HitBox : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	/*void Update () 
 	{
 		Collider[] colliders = Physics.OverlapSphere(transform.position, m_Radius);
 
@@ -40,13 +40,13 @@ public class HitBox : MonoBehaviour
 				m_ObjectsInteractedWith.Add (otherCollider.gameObject);
 			}
 		}
-	}
+	}*/
 
-	void OnCollisionWithTrigger(Collider collider)
+	void OnTriggerEnter2D(Collider2D collider)
 	{
-		if(collider.tag != tag && collider.GetComponent<Health>())
+		if(collider.GetComponent<BaseAI>())
 		{
-			collider.GetComponent<Health>().Damage(m_DamageAmount);
+			collider.GetComponent<BaseAI>().Damage(m_DamageAmount);
 		}
 	}
 }
