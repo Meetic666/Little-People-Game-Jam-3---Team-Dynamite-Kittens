@@ -81,7 +81,7 @@ public class BaseAI : MonoBehaviour
 
 	}
 
-	protected virtual voir VirtualDied()
+	protected virtual void VirtualDied()
 	{
 
 	}
