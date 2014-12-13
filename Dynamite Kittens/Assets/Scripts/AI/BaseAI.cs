@@ -3,11 +3,13 @@ using System.Collections;
 
 public class BaseAI : MonoBehaviour
 {
+	bool m_IsMovingRight = true;
+
 	public float m_Health = 10;
 	public float m_MovementSpeed = 0.1f;
 	public float m_JumpingSpeed = 0.3f;
 
-	protected BoxCollider2D m_AttackBox;
+	protected BoxCollider m_AttackBox;
 
 	protected ActionState m_CurrentState = ActionState.e_Moving;
 	protected enum ActionState
@@ -25,14 +27,15 @@ public class BaseAI : MonoBehaviour
 
 	void Start()
 	{
-		gameObject.AddComponent<BoxCollider2D>();
-		m_AttackBox = gameObject.GetComponent<BoxCollider2D> ();
+		gameObject.AddComponent<BoxCollider>();
+		m_AttackBox = gameObject.GetComponent<BoxCollider> ();
 		m_AttackBox.center = transform.right;
 		m_AttackBox.isTrigger = true;
 	}
 
 	void Update()
 	{
+		Debug.Log (m_CurrentState.ToString ());
 		switch(m_CurrentState)
 		{
 			case ActionState.e_Moving:
@@ -48,6 +51,7 @@ public class BaseAI : MonoBehaviour
 			case ActionState.e_Dead:
 			{
 				Died();
+				m_CurrentState = ActionState.e_Idle;
 				break;
 			}
 			default:
@@ -75,6 +79,23 @@ public class BaseAI : MonoBehaviour
 		m_CurrentState = ActionState.e_Idle;
 	}
 
+	void SwitchDirection ()
+	{
+		m_MovementSpeed *= -1;
+
+		if(m_IsMovingRight)
+		{
+			m_AttackBox.center = -transform.right;
+		}
+		else
+		{
+			m_AttackBox.center = transform.right;
+		}
+
+
+		VirtualSwitchDirection ();
+	}
+
 	protected virtual void VirtualUpdate()
 	{
 
@@ -95,7 +116,7 @@ public class BaseAI : MonoBehaviour
 
 	}
 
-	protected virtual void SwitchDirection()
+	protected virtual void VirtualSwitchDirection()
 	{
 
 	}
@@ -121,11 +142,14 @@ public class BaseAI : MonoBehaviour
 	{
 		if(other.gameObject.GetComponent<PlayerMovement>() != null)
 		{
-			m_CurrentState = ActionState.e_Attacking;
+			if(m_CurrentState != ActionState.e_Idle)
+			{
+				m_CurrentState = ActionState.e_Attacking;
+			}
 		}
 		else if(other.gameObject.tag == "Edge")
 		{
-			m_MovementSpeed *= -1;
+
 			SwitchDirection();
 		}
 	}

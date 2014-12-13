@@ -1,16 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
-[RequireComponent(typeof(BaseAI))]
+[RequireComponent(typeof(BaseAI), typeof(BodyExplosion))]
 public class DynamiteKitten : BaseAI 
 {
 	bool m_FuseLit = false;
-	float m_FuseTimer = 2.5f;
-	float m_ExplosionRangeMultiplier = 2;
-	float m_DismembermentForce = 1;
 
-	List<GameObject> m_Children = new List<GameObject>();
+	public float m_FuseTimer = 2.5f;
+	public float m_ExplosionRangeMultiplier = 2;
+	public float m_DismembermentForce = 1;
 
 	protected override void VirtualUpdate()
 	{
@@ -21,6 +19,7 @@ public class DynamiteKitten : BaseAI
 			if(m_FuseTimer <= 0)
 			{
 				m_CurrentState = ActionState.e_Dead;
+				m_FuseLit = false;
 			}
 		}
 	}
@@ -32,28 +31,20 @@ public class DynamiteKitten : BaseAI
 
 	protected override void VirtualAttack()
 	{
-		m_FuseLit = true;
-	}
+		m_FuseLit = true;	}
 
 	protected override void VirtualDied()
 	{
 		if(m_AttackBox != null)
 		{
-			m_AttackBox.center = transform.position;
+			m_AttackBox.center = Vector3.zero;
 			m_AttackBox.size *= m_ExplosionRangeMultiplier;
 		}
-		
-		Destroy (gameObject.GetComponent<Rigidbody> ());
-		for(int i = 0; i < transform.childCount; i++)
-		{
-			m_Children.Add(transform.GetChild(i).gameObject);
-			transform.GetChild(i).gameObject.AddComponent<Rigidbody2D>();
-			transform.GetChild(i).gameObject.rigidbody.AddForce(transform.up * m_DismembermentForce, ForceMode.Impulse);
-		}
-		transform.DetachChildren ();
+
+		gameObject.GetComponent<BodyExplosion> ().Explode ();
 	}
 
-	protected override void SwitchDirection()
+	protected override void VirtualSwitchDirection()
 	{
 
 	}

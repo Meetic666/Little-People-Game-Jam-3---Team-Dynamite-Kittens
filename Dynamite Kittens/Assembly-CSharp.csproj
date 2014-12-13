@@ -47,7 +47,13 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\AI\BaseAI.cs" />
+     <Compile Include="Assets\Scripts\AI\BodyExplosion.cs" />
      <Compile Include="Assets\Scripts\AI\DynamiteKitten.cs" />
+     <Compile Include="Assets\Scripts\Animation\AnimationManager.cs" />
+     <Compile Include="Assets\Scripts\Animation\EnemyAnimationManager.cs" />
+     <Compile Include="Assets\Scripts\Animation\LevelElementAnimationManager.cs" />
+     <Compile Include="Assets\Scripts\Animation\PlayerAnimationManager.cs" />
+     <Compile Include="Assets\Scripts\Level Elements\AnimatedPlatform.cs" />
      <Compile Include="Assets\Scripts\Level Elements\LevelElement.cs" />
      <Compile Include="Assets\Scripts\Player\Health.cs" />
      <Compile Include="Assets\Scripts\Player\HitBox.cs" />
