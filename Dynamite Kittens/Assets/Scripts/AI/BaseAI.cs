@@ -7,7 +7,7 @@ public class BaseAI : MonoBehaviour
 	float m_MovementSpeed = 0.1f;
 	float m_JumpingSpeed = 0.3f;
 
-	BoxCollider m_AttackBox;
+	protected BoxCollider m_AttackBox;
 
 	protected ActionState m_CurrentState = ActionState.e_Idle;
 	protected enum ActionState
@@ -47,7 +47,7 @@ public class BaseAI : MonoBehaviour
 
 	void Move()
 	{
-		transform.position += transform.forward * (Vector2.one * m_MovementSpeed);
+		transform.position += transform.right * m_MovementSpeed;
 
 		VirtualMove();
 	}
@@ -57,7 +57,6 @@ public class BaseAI : MonoBehaviour
 		if(m_AttackBox == null) // Creates attacking box
 		{
 			m_AttackBox = gameObject.AddComponent<BoxCollider>();
-			m_AttackBox.center = transform.forward;
 		}
 
 		VirtualAttack (); //Attack behaviours unique to AI are applied
@@ -89,9 +88,16 @@ public class BaseAI : MonoBehaviour
 
 	}
 
-	public void Damage(float dmg)
+	public void Damage(float dmg = 0)
 	{
-		m_Health -= dmg;
+		if(dmg = 0)
+		{
+			m_Health = 0;
+		}
+		else
+		{
+			m_Health -= dmg;
+		}
 
 		if(m_Health <= 0)
 		{
