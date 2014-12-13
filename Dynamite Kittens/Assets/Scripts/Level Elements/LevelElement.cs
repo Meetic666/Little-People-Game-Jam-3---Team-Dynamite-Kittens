@@ -8,7 +8,7 @@ public class LevelElement : MonoBehaviour
 
     private void InteractWith(PlayerMovement player)
     {
-        VirtualInteractWith(player);
+        //VirtualInteractWith(player);
     }
 
     //private void InteractWith(Enemy enemy)
@@ -16,7 +16,7 @@ public class LevelElement : MonoBehaviour
     //    VirtualInteractWith(enemy);
     //}
 
-    protected void VirtualInteractWith(PlayerMovement player);
+    //protected void VirtualInteractWith(PlayerMovement player);
     //protected void VirtualInteractWith(Enemy enemy);
 
     protected void SwitchTexture()

@@ -16,6 +16,14 @@ public class PlayerMovement : MonoBehaviour
 	PlayerInput m_Input;
 	CharacterController m_Controller;
 
+	public Vector2 CurrentSpeed
+	{
+		get
+		{
+			return m_CurrentSpeed;
+		}
+	}
+
 	// Use this for initialization
 	void Start () 
 	{
