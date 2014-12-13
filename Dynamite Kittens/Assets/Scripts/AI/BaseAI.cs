@@ -90,7 +90,7 @@ public class BaseAI : MonoBehaviour
 
 	public void Damage(float dmg = 0)
 	{
-		if(dmg = 0)
+		if(dmg == 0)
 		{
 			m_Health = 0;
 		}
