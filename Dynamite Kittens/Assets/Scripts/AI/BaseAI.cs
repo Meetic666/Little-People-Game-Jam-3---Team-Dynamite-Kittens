@@ -9,7 +9,7 @@ public class BaseAI : MonoBehaviour
 
 	protected BoxCollider2D m_AttackBox;
 
-	protected ActionState m_CurrentState = ActionState.e_Idle;
+	protected ActionState m_CurrentState = ActionState.e_Moving;
 	protected enum ActionState
 	{
 		e_Idle = 0,
@@ -117,7 +117,7 @@ public class BaseAI : MonoBehaviour
 		}
 	}
 
-	void OnTriggerEnter(Collider other)
+	void OnCollisionEnter(Collision other)
 	{
 		if(other.gameObject.GetComponent<PlayerMovement>() != null)
 		{
