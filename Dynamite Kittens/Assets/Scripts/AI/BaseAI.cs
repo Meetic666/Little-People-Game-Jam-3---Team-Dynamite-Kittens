@@ -60,7 +60,7 @@ public class BaseAI : MonoBehaviour
 
 	void Move()
 	{
-		transform.position += transform.right * m_MovementSpeed;
+		transform.position += -transform.right * m_MovementSpeed;
 
 		VirtualMove();
 	}
@@ -78,7 +78,8 @@ public class BaseAI : MonoBehaviour
 
 	void SwitchDirection ()
 	{
-		m_MovementSpeed *= -1;
+		//m_MovementSpeed *= -1;
+		transform.Rotate (Vector2.up, 180);
 
 		VirtualSwitchDirection ();
 	}

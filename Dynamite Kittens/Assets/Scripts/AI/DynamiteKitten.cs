@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(BaseAI), typeof(BodyExplosion))]
+[RequireComponent(typeof(BodyExplosion))]
 public class DynamiteKitten : BaseAI 
 {
 	bool m_FuseLit = false;
@@ -9,7 +9,6 @@ public class DynamiteKitten : BaseAI
 
 	public float m_FuseTimer = 2.5f;
 	public float m_ExplosionRangeMultiplier = 2;
-	public float m_DismembermentForce = 1;
 
 	protected override void VirtualUpdate()
 	{
