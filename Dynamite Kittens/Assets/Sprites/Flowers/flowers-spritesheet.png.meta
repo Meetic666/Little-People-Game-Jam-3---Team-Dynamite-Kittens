@@ -124,8 +124,8 @@ TextureImporter:
         y: 6
         width: 32
         height: 32
-      alignment: 7
-      pivot: {x: .5, y: 0}
+      alignment: 9
+      pivot: {x: .550000012, y: 0}
     - name: flowers-Ecstatic_2
       rect:
         serializedVersion: 2
@@ -142,8 +142,8 @@ TextureImporter:
         y: 6
         width: 32
         height: 32
-      alignment: 7
-      pivot: {x: .5, y: 0}
+      alignment: 9
+      pivot: {x: .449999988, y: 0}
     - name: flowers-Ecstatic_4
       rect:
         serializedVersion: 2
