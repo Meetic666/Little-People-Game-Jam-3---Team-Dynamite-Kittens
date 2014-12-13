@@ -6,6 +6,7 @@ public class PlayerAttack : MonoBehaviour
 	public GameObject m_ProjectilePrefab;
 
 	public Vector3 m_HitBoxCreationOffset;
+	public int m_DamageAmount;
 
 	PlayerInput m_Input;
 	PlayerMovement m_Movement;
@@ -43,5 +44,6 @@ public class PlayerAttack : MonoBehaviour
 		GameObject newProjectile = (GameObject) Instantiate(m_ProjectilePrefab, transform.position + offset, Quaternion.identity);
 
 		newProjectile.GetComponent<Projectile>().m_Direction = direction;
+		newProjectile.GetComponent<HitBox>().m_DamageAmount = m_DamageAmount;
 	}
 }
