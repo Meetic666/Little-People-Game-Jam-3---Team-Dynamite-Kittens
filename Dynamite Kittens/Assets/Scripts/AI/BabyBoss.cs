@@ -21,12 +21,19 @@ public class BabyBoss : MonoBehaviour
 	public GameObject m_SpawnPoint;
 	public int m_NumberOfEnemiesPerWave;
 
+	public Animator m_BabyAnimator;
+	public Animator m_EyesAnimator;
+
+	int m_NumberOfHits = 0;
+
 	// Use this for initialization
 	void Start () 
 	{
 		m_DelayTimer = m_DelayTime;
 		m_Animator = transform.GetComponentInChildren<Animator> ();
 		m_SpawnIntervalTimer = m_SpawnIntervalTime;
+
+		m_EyesAnimator.renderer.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -34,6 +41,8 @@ public class BabyBoss : MonoBehaviour
 	{
 		if(m_BossEngaged)
 		{
+			m_BabyAnimator.SetBool("Attack", m_SpawnIntervalTimer <= 0.0f);
+
 			if(m_SpawnIntervalTimer <= 0)
 			{
 				for(int i = 0; i < m_NumberOfEnemiesPerWave; i++)
@@ -69,7 +78,17 @@ public class BabyBoss : MonoBehaviour
 	public void Damage()
 	{
 		m_Health--;
-		//TODO: Update animator
+
+		m_NumberOfHits++;
+
+		if(m_NumberOfHits == 1)
+		{
+			m_EyesAnimator.renderer.enabled = true;
+		}
+		else
+		{
+			m_EyesAnimator.SetInteger("Hit", m_NumberOfHits - 1);
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
