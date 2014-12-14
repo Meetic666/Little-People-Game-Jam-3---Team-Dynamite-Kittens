@@ -25,6 +25,8 @@ public class StabbingPenguin : BaseAI
 
 	protected override void VirtualUpdate()
 	{
+		Debug.Log (m_CurrentState.ToString ());
+
 		if(m_FuseLit)
 		{
 			m_FuseTimer -= Time.deltaTime;
@@ -57,8 +59,8 @@ public class StabbingPenguin : BaseAI
 			m_PlayerTarget.Damage(1);
 		}
 
-		gameObject.GetComponent<BodyExplosion> ().Explode ();
 		m_CurrentState = ActionState.e_Idle;
+		m_ChangeState = true;
 	}
 	
 	protected override void VirtualDamage()
@@ -67,7 +69,6 @@ public class StabbingPenguin : BaseAI
 		m_Animator.SetBool("Sliding", false);
 
 		rigidbody2D.AddForce (m_KnockBackForce, ForceMode2D.Impulse);
-		m_CurrentState = ActionState.e_Idle;
 		m_FuseLit = true;
 	}
 
@@ -84,12 +85,18 @@ public class StabbingPenguin : BaseAI
 
 	protected override void VirtualOnCollisionEnter2D(Collision2D other)
 	{
-		if(other.gameObject.GetComponent<PlayerMovement>() != null)
+		if(m_CurrentState == ActionState.e_Attacking)
 		{
-			m_PlayerTarget.Damage(1);
+			if(other.gameObject.GetComponent<PlayerMovement>() != null)
+			{
+				m_PlayerTarget.Damage(1);
+				
+				gameObject.GetComponent<BodyExplosion> ().Explode ();
+				m_CurrentState = ActionState.e_Dead;
+				m_FuseLit = false;
 
-			gameObject.GetComponent<BodyExplosion> ().Explode ();
-			gameObject.SetActive(false);
+				//gameObject.SetActive(false);
+			}
 		}
 	}
 }
