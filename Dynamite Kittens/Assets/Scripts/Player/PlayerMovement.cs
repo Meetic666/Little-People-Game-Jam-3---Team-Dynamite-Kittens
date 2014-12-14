@@ -24,8 +24,8 @@ public class PlayerMovement : MonoBehaviour
 
 		newVelocity.x = Mathf.Lerp(newVelocity.x, m_MoveSpeed * m_Input.MoveHorizontal, m_Acceleration * Time.deltaTime);
 
-		if((transform.lossyScale.x > 0.0f && rigidbody2D.velocity.x < 0.0f)
-		   || (transform.lossyScale.x < 0.0f && rigidbody2D.velocity.x > 0.0f))
+		if((transform.lossyScale.x > 0.0f && m_Input.MoveHorizontal < 0.0f)
+		   || (transform.lossyScale.x < 0.0f && m_Input.MoveHorizontal > 0.0f))
 		{
 			Vector3 newScale = transform.localScale;
 			newScale.x *= -1;
@@ -56,5 +56,13 @@ public class PlayerMovement : MonoBehaviour
         }
 
 		rigidbody2D.velocity = newVelocity;
+	}
+
+	void OnTriggerEnter2D(Collider2D collider)
+	{
+		if(collider.tag == "KillVolume")
+		{
+			GetComponent<PlayerCheckpoint>().Respawn();
+		}
 	}
 }
