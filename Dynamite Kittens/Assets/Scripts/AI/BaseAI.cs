@@ -30,6 +30,8 @@ public class BaseAI : MonoBehaviour
 		//gameObject.AddComponent<BoxCollider2D>();
 		m_AttackBox = gameObject.GetComponent<BoxCollider2D> ();
 		m_AttackBox.isTrigger = true;
+
+		VirtualStart ();
 	}
 
 	void Update()
@@ -82,6 +84,11 @@ public class BaseAI : MonoBehaviour
 		transform.Rotate (Vector2.up, 180);
 
 		VirtualSwitchDirection ();
+	}
+
+	protected virtual void VirtualStart()
+	{
+
 	}
 
 	protected virtual void VirtualUpdate()
