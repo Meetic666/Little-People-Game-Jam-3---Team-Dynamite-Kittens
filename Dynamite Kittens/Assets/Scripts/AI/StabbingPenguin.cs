@@ -5,8 +5,8 @@ using System.Collections;
 public class StabbingPenguin : BaseAI 
 {
 	bool m_FuseLit = false;
-	bool m_IsSliding = false;
-	Vector2 m_SightDirection = new Vector2 (-1, 0);
+	Vector2 m_SightDirection = new Vector2 (1, 0);
+	Animator m_Animator;
 
 	public float m_SightRange = 1;
 	public float m_AditionalSlidingSpeed = 0.05f;
@@ -18,6 +18,8 @@ public class StabbingPenguin : BaseAI
 	{
 		m_AttackBox.center = m_SightDirection;
 		m_AttackBox.size = new Vector2 (2, 1);
+		m_MovementSpeed *= -1;
+		m_Animator = transform.GetComponentInChildren<Animator> ();
 	}
 
 	protected override void VirtualUpdate()
@@ -37,12 +39,7 @@ public class StabbingPenguin : BaseAI
 	protected override void VirtualAttack()
 	{
 		m_FuseLit = true;	
-		m_IsSliding = true;
-
-		if(m_IsSliding)
-		{
-			transform.position += -transform.right * (m_MovementSpeed + m_AditionalSlidingSpeed);
-		}
+		transform.position += -transform.right * (m_MovementSpeed + m_AditionalSlidingSpeed);
 	}
 	
 	protected override void VirtualDied()
@@ -59,20 +56,21 @@ public class StabbingPenguin : BaseAI
 	
 	protected override void VirtualDamage()
 	{
-		m_IsSliding = false;
-		rigidbody2D.AddForce (m_KnockBackForce, ForceMode2D.Impulse);
-		m_CurrentState = ActionState.e_Idle;
-	}
+		m_Animator.SetBool("Walking", true);
+		m_Animator.SetBool("Sliding", false);
 
-	protected override void VirtualSwitchDirection()
-	{
-		m_SightDirection *= -1;
+		//rigidbody2D.AddForce (m_KnockBackForce, ForceMode2D.Impulse);
+		m_CurrentState = ActionState.e_Idle;
+		m_FuseLit = true;
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if(other.gameObject.GetComponent<PlayerMovement>() != null)
 		{
+			m_Animator.SetBool("Walking", false);
+			m_Animator.SetBool("Sliding", true);
+
 			m_CurrentState = ActionState.e_Attacking;
 		}
 	}
