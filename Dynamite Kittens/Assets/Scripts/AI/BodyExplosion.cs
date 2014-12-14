@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public class BodyExplosion : MonoBehaviour 
 {
 	public float m_ExplosionForce = 2;
-	public float m_ExplosionRadius = 1;
-	public float m_UpwardsModifier = 2;
+	//public float m_ExplosionRadius = 1;
+	//public float m_UpwardsModifier = 2;
 	public int m_MediumParticleCount = 3;
     public int m_TinyParticleCount = 3;
 	public GameObject m_GoreParticle;
