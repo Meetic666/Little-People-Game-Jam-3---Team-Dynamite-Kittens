@@ -8,6 +8,9 @@ public class PlayerAttack : MonoBehaviour
 	public Vector3 m_HitBoxCreationOffset;
 	public int m_DamageAmount;
 
+	public float m_AttackDelay;
+	float m_AttackTimer;
+
 	PlayerInput m_Input;
 	PlayerMovement m_Movement;
 	Animator m_Animator;
@@ -24,9 +27,21 @@ public class PlayerAttack : MonoBehaviour
 	{
 		m_Animator.SetBool("Attack", m_Input.Attack);
 
-		if(m_Input.Attack)
+		if(m_AttackTimer > 0.0f)
 		{
-			Attack();
+			m_AttackTimer -= Time.deltaTime;
+
+			if(m_AttackTimer <= 0.0f)
+			{
+				Attack ();
+			}
+		}
+		else
+		{
+			if(m_Input.Attack)
+			{
+				m_AttackTimer = m_AttackDelay;
+            }
 		}
 	}
 
