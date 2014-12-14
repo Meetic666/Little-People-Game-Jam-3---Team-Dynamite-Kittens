@@ -151,11 +151,11 @@ public class BaseAI : MonoBehaviour
         }
 	}
 
-    //void OnTriggerEnter2D(Collider2D collider)
-    //{
-    //    if (collider.gameObject.tag == "Edge")
-    //    {
-    //        SwitchDirection();
-    //    }
-    //}
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "Edge")
+        {
+            SwitchDirection();
+        }
+    }
 }
