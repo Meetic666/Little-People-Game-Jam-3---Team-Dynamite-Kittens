@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 	public float m_MoveSpeed;
 	public float m_JumpSpeed;
 	public int m_Direction;
+	public Vector2 m_AdditionalForce = Vector2.zero;
 
 	PlayerInput m_Input;
 	Animator m_Animator;
@@ -66,6 +67,9 @@ public class PlayerMovement : MonoBehaviour
 		{
 			m_Direction = -1;
 		}
+
+		rigidbody2D.velocity += m_AdditionalForce;
+		m_AdditionalForce = Vector2.zero;
 	}
 
 	void OnTriggerEnter2D(Collider2D collider)

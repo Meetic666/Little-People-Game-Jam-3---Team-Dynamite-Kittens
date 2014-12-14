@@ -58,7 +58,7 @@ public class Health : MonoBehaviour
 			DoDeathBehaviour();
 		}
 
-		rigidbody2D.AddForce (m_KnockBackForceMax * gameObject.GetComponent<PlayerMovement> ().m_Direction, ForceMode2D.Impulse);
+		gameObject.GetComponent<PlayerMovement> ().m_AdditionalForce = m_KnockBackForceMax * gameObject.GetComponent<PlayerMovement> ().m_Direction;
 	}
 
 	public void DoDeathBehaviour()
