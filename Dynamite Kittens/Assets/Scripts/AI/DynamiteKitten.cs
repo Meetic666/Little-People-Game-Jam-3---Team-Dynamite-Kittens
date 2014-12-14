@@ -7,8 +7,12 @@ public class DynamiteKitten : BaseAI
 	bool m_FuseLit = false;
 	public Vector2 m_KnockBackForce;
 
-	public float m_FuseTimer = 2.5f;
 	public float m_ExplosionRangeMultiplier = 2;
+
+	protected override void VirtualStart()
+	{
+		m_FuseTimer = m_FuseTime;
+	}
 
 	protected override void VirtualUpdate()
 	{

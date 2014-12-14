@@ -7,6 +7,9 @@ public class BaseAI : MonoBehaviour
 	bool m_IsMovingRight = true;
 	bool m_CanTurn = true;
 
+	protected float m_FuseTime = 2;
+	protected float m_FuseTimer;
+
 	protected Health m_PlayerTarget;
 
 	public float m_Health = 10;

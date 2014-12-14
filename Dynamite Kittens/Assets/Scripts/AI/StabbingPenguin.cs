@@ -11,11 +11,11 @@ public class StabbingPenguin : BaseAI
 	public float m_SightRange = 1;
 	public float m_AditionalSlidingSpeed = 0.05f;
 	public Vector2 m_KnockBackForce;
-	public float m_FuseTimer = 2.5f;
 	public float m_ExplosionRangeMultiplier = 2;
 
 	protected override void VirtualStart()
 	{
+		m_FuseTimer = m_FuseTime;
 		m_AttackBox.center = m_SightDirection /2;
 		m_AttackBox.size = new Vector2 (1, 0.5f);
 		m_MovementSpeed *= -1;

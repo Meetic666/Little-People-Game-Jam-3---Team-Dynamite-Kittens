@@ -49,8 +49,6 @@ public class Health : MonoBehaviour
 
 	public void Damage(int damageAmount)
 	{
-		Debug.Log (Time.time + " : Damage !!!");
-
 		m_Health -= damageAmount;
 
 		if(m_Health <= 0)
