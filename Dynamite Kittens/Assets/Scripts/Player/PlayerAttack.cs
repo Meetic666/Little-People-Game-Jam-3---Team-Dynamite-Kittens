@@ -12,13 +12,11 @@ public class PlayerAttack : MonoBehaviour
 	float m_AttackTimer;
 
 	PlayerInput m_Input;
-	PlayerMovement m_Movement;
 	Animator m_Animator;
 
 	void Start()
 	{
 		m_Input = GetComponent<PlayerInput>();
-		m_Movement = GetComponent<PlayerMovement>();
 		m_Animator = GetComponentInChildren<Animator>();
 	}
 	
