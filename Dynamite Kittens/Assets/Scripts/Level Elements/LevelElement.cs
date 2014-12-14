@@ -188,7 +188,14 @@ public class LevelElement : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy" && EnemyCanInteractWith == true)
         {
+            GameObject enemy = collision.gameObject;
 
+            if (enemy != null)
+            {
+                RemoveObjectFromList(enemy.gameObject);
+                if (m_InteractingObjects.Count == 0) { ChangeState(EmotionalState.Happy); }
+                //StopInteractWith(enemy);
+            }
         }
     }
 }
