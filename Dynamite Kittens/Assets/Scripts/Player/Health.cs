@@ -14,6 +14,25 @@ public class Health : MonoBehaviour
 	public int m_MaxHealth;
 	int m_Health;
 
+	public int CurrentHealth
+	{
+		get
+		{
+			return m_Health;
+		}
+
+		set
+		{
+			m_Health = value;
+
+			if(m_Health > m_MaxHealth)
+			{
+				m_Health = m_MaxHealth;
+			}
+		}
+	}
+
+
 	// Use this for initialization
 	void Start () 
 	{

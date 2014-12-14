@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PickUp : MonoBehaviour 
+public class BootPickUp : MonoBehaviour 
 {
 	public int m_PickUpDamageUpgrade;
 
