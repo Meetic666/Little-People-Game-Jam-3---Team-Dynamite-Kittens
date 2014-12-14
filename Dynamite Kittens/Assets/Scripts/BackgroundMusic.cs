@@ -7,12 +7,18 @@ public class BackgroundMusic : MonoBehaviour {
 	public static BackgroundMusic Instance {
 		get { return instance; }
 	}
+
+	public AudioClip m_BackgroundMusic;
+
 	void Awake() {
 		if (instance != null && instance != this) {
 			Destroy(this.gameObject);
 			return;
 		} else {
 			instance = this;
+
+			audio.clip = m_BackgroundMusic;
+			audio.Play();
 		}
 		DontDestroyOnLoad(this.gameObject);
 	}

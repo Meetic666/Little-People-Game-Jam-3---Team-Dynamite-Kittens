@@ -1,6 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Background\BackgroundSpawn.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BackgroundMusic.cs">
     <Files>
       <File FileName="Assets\Scripts\AI\DynamiteKitten.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\AI\BaseAI.cs" Line="1" Column="1" />
@@ -10,7 +10,7 @@
       <File FileName="Assets\Scripts\Player\HitBox.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Player\PlayerAttack.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\AI\GrenadeBunny.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Background\BackgroundSpawn.cs" Line="28" Column="45" />
+      <File FileName="Assets\Scripts\Background\BackgroundSpawn.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\AI\StabbingPenguin.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Player\PlayerCheckpoint.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Player\Health.cs" Line="1" Column="1" />
@@ -19,6 +19,7 @@
       <File FileName="Assets\Scripts\AI\BabyBoss.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Player\HealthManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\SplashScreen.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BackgroundMusic.cs" Line="21" Column="17" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
