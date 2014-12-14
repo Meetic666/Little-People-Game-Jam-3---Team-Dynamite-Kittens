@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class BaseAI : MonoBehaviour
 {
-	bool m_IsMovingRight = true;
 	bool m_CanTurn = true;
 
 	protected float m_FuseTime = 2;

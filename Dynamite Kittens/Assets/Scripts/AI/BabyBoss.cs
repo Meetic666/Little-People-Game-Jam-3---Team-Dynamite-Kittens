@@ -3,14 +3,17 @@ using System.Collections;
 
 public class BabyBoss : MonoBehaviour 
 {
-	bool m_LeftArmUp = true;
-	bool m_BobbingUp = true;
 	bool m_BossEngaged = false;
+
+	Animator m_Animator;
 
 	public int m_Health;
 	
 	public float m_SpawnIntervalTime;
 	float m_SpawnIntervalTimer;
+
+	public float m_DelayTime;
+	float m_DelayTimer;
 	
 	//Enemies to spawn
 	public GameObject[] m_Enemies = new GameObject[3];
@@ -21,30 +24,45 @@ public class BabyBoss : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
+		m_DelayTimer = m_DelayTime;
+		m_Animator = transform.GetComponentInChildren<Animator> ();
 		m_SpawnIntervalTimer = m_SpawnIntervalTime;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if(m_SpawnIntervalTimer <= 0)
+		if(m_BossEngaged)
 		{
-			for(int i = 0; i < m_NumberOfEnemiesPerWave; i++)
+			if(m_SpawnIntervalTimer <= 0)
 			{
-				int rand = Random.Range(0, 3);
-				GameObject enemy = (GameObject)Instantiate(m_Enemies[rand], m_SpawnPoint.transform.position, Quaternion.identity);
-				
-				if(i == 2)
+				for(int i = 0; i < m_NumberOfEnemiesPerWave; i++)
 				{
-					enemy.transform.Rotate(enemy.transform.up, 180);
+					if(m_DelayTimer <= 0)
+					{
+						int rand = Random.Range(0, 3);
+						GameObject enemy = (GameObject)Instantiate(m_Enemies[rand], m_SpawnPoint.transform.position, Quaternion.identity);
+						
+						if(i == 2)
+						{
+							enemy.transform.Rotate(enemy.transform.up, 180);
+						}
+						
+						m_DelayTimer = m_DelayTime;
+					}
+					else
+					{
+						m_DelayTimer -= Time.deltaTime;
+					}
+					
 				}
+				
+				m_SpawnIntervalTimer = m_SpawnIntervalTime;
 			}
-
-			m_SpawnIntervalTimer = m_SpawnIntervalTime;
-		}
-		else
-		{
-			m_SpawnIntervalTimer -= Time.deltaTime;
+			else
+			{
+				m_SpawnIntervalTimer -= Time.deltaTime;
+			}
 		}
 	}
 
