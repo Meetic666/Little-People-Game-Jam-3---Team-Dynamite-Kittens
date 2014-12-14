@@ -96,16 +96,20 @@ public class BabyBoss : MonoBehaviour
 
 	void OnTriggerExit2D(Collider2D other)
 	{
-		if(other.gameObject.tag == "Attack")
-		{
-			Damage();
-		}
-		else if(other.gameObject.GetComponent<PlayerMovement>() != null)
+		if(other.gameObject.GetComponent<PlayerMovement>() != null)
 		{
 			m_BossEngaged = true;
 			m_BossEngagement.GetComponent<BoxCollider2D>().isTrigger = false;
 			m_BossEngagement.tag = "Edge";
 			m_Player = other.gameObject;
+		}
+	}
+
+	void OnTriggerEnter2D (Collider2D other)
+	{
+		if(other.gameObject.tag == "Attack")
+		{
+			Damage();
 		}
 	}
 }
