@@ -5,6 +5,10 @@ using System.Collections.Generic;
 public class BaseAI : MonoBehaviour
 {
 	bool m_IsMovingRight = true;
+	bool m_CanTurn = true;
+
+	protected Collision2D m_CurrentCollision;
+	protected Collider2D m_CurrentCollider;
 
 	public float m_Health = 10;
 	public float m_MovementSpeed = 0.1f;
@@ -166,6 +170,16 @@ public class BaseAI : MonoBehaviour
 		}
 	}
 
+	protected virtual void VirtualOnCollisionEnter2D()
+	{
+
+	}
+
+	protected virtual void VirtualOnTriggerEnter2D()
+	{
+		
+	}
+
 	void OnCollisionEnter2D(Collision2D other)
 	{
 		if(other.gameObject.GetComponent<PlayerMovement>() != null)
@@ -179,13 +193,38 @@ public class BaseAI : MonoBehaviour
         {
             SwitchDirection();
         }
+
+		VirtualOnCollisionEnter2D ();
+		m_CurrentCollision = null;
 	}
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Edge")
-        {
-            SwitchDirection();
-        }
+		VirtualOnTriggerEnter2D ();
+
+		m_CurrentCollider = null;
     }
+
+	void OnTriggerStay2D(Collider2D collider)
+	{
+		if(m_CanTurn)
+		{
+			if (collider.gameObject.tag == "Edge")
+			{
+				if(Vector2.Distance(transform.position, collider.transform.position) <= 1)
+				{
+					SwitchDirection();
+					m_CanTurn = false;
+				}
+			}
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D collider)
+	{
+		if(collider.tag == "Edge")
+		{
+			m_CanTurn = true;
+		}
+	}
 }

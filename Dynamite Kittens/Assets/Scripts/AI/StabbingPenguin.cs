@@ -16,8 +16,8 @@ public class StabbingPenguin : BaseAI
 
 	protected override void VirtualStart()
 	{
-		m_AttackBox.center = m_SightDirection;
-		m_AttackBox.size = new Vector2 (2, 1);
+		m_AttackBox.center = m_SightDirection /2;
+		m_AttackBox.size = new Vector2 (1, 0.5f);
 		m_MovementSpeed *= -1;
 		m_Animator = transform.GetComponentInChildren<Animator> ();
 	}
@@ -64,21 +64,27 @@ public class StabbingPenguin : BaseAI
 		m_FuseLit = true;
 	}
 
-	void OnTriggerEnter2D(Collider2D other)
+	protected override void VirtualOnTriggerEnter2D()
 	{
-		if(other.gameObject.GetComponent<PlayerMovement>() != null)
+		if(m_CurrentCollider != null)
 		{
-			m_Animator.SetBool("Walking", false);
-			m_Animator.SetBool("Sliding", true);
+			if(m_CurrentCollider.gameObject.GetComponent<PlayerMovement>() != null)
+			{
+				m_Animator.SetBool("Walking", false);
+				m_Animator.SetBool("Sliding", true);
+			}
 		}
 	}
 
-	void OnCollisionEnter2D(Collision2D other)
+	protected override void VirtualOnCollisionEnter2D()
 	{
-		if(other.gameObject.GetComponent<PlayerMovement>() != null)
+		if(m_CurrentCollision != null)
 		{
-			gameObject.GetComponent<BodyExplosion> ().Explode ();
-			gameObject.SetActive(false);
+			if(m_CurrentCollision.gameObject.GetComponent<PlayerMovement>() != null)
+			{
+				gameObject.GetComponent<BodyExplosion> ().Explode ();
+				gameObject.SetActive(false);
+			}
 		}
 	}
 }
