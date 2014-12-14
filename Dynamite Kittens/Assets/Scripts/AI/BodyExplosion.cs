@@ -14,11 +14,18 @@ public class BodyExplosion : MonoBehaviour
 		for(int i = 0; i < m_ParticleCount; i++)
 		{
 			GameObject particle = (GameObject)Instantiate(m_GoreParticle, transform.position, transform.rotation);
-			particle.rigidbody.AddExplosionForce(m_ExplosionForce, 
-			                                     transform.position, 
-			                                     m_ExplosionRadius, 
-			                                     m_UpwardsModifier, 
-			                                     ForceMode.Impulse);
+            float x = Random.Range(-1.0f,1.0f);
+            float y = Random.Range(-1.0f,1.0f);
+            Vector2 direction = new Vector2(x, y);
+            //particle.rigidbody2D.AddForce(direction,ForceMode2D.Impulse);
+            particle.rigidbody2D.velocity = direction * m_ExplosionForce;
+            //particle.rigidbody2D.AddForceAtPosition(direction, transform.position, ForceMode2D.Impulse);
+            //particle.rigidbody2D.AddForceAtPosition(m_ExplosionForce, transform.position);
+            //particle.rigidbody.AddExplosionForce(m_ExplosionForce,
+            //                                     transform.position,
+            //                                     m_ExplosionRadius,
+            //                                     m_UpwardsModifier,
+            //                                     ForceMode.Impulse);
 		}
 	}
 }

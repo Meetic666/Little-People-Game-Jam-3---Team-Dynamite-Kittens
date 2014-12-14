@@ -36,7 +36,6 @@ public class DynamiteKitten : BaseAI
 			m_AttackBox.center = Vector3.zero;
 			m_AttackBox.size *= m_ExplosionRangeMultiplier;
 		}
-
 		gameObject.GetComponent<BodyExplosion> ().Explode ();
 		m_CurrentState = ActionState.e_Idle;
 	}

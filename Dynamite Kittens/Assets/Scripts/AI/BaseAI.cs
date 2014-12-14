@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class BaseAI : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class BaseAI : MonoBehaviour
 	public float m_Health = 10;
 	public float m_MovementSpeed = 0.1f;
 	public float m_JumpingSpeed = 0.3f;
+    public List<Sprite> m_BigBlobs = new List<Sprite>();
+
+    private BoxCollider2D[] m_Colliders;
+    private BoxCollider2D m_ChildCollider;
 
 	protected BoxCollider2D m_AttackBox;
 
@@ -30,6 +35,15 @@ public class BaseAI : MonoBehaviour
 		//gameObject.AddComponent<BoxCollider2D>();
 		m_AttackBox = gameObject.GetComponent<BoxCollider2D> ();
 		m_AttackBox.isTrigger = true;
+
+        m_Colliders = GetComponentsInChildren<BoxCollider2D>();
+        for (int i = 0; i < m_Colliders.Length; i++)
+        {
+            if (m_Colliders[i].isTrigger == false)
+            {
+                m_ChildCollider = m_Colliders[i];
+            }
+        }
 
 		VirtualStart ();
 	}
@@ -74,6 +88,9 @@ public class BaseAI : MonoBehaviour
 
 	void Died()
 	{
+        m_ChildCollider.enabled = false;
+        GetComponent<Rigidbody2D>().isKinematic = true;
+        GetComponentInChildren<SpriteRenderer>().sprite = m_BigBlobs[Random.Range(0, m_BigBlobs.Count)];
 		VirtualDied ();
 		m_CurrentState = ActionState.e_Idle;
 	}

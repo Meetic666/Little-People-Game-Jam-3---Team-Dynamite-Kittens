@@ -1,6 +1,36 @@
 fileFormatVersion: 2
 guid: 79bed5d08dcaab14cb7bd7a9fc3dbcf3
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: gore_BigBlob01
+    21300002: gore_BigBlob02
+    21300004: gore_BigBlob03
+    21300006: gore_BigBlob04
+    21300008: gore_BigBlob05
+    21300010: gore_SmallBlob01
+    21300012: gore_TinyBlob01
+    21300014: gore_SmallBlob02
+    21300016: gore_SmallBlob03
+    21300018: gore_SmallBlob04
+    21300020: gore_SmallBlob06
+    21300022: gore_TinyBlob08
+    21300024: gore_SmallBlob07
+    21300026: gore_SmallBlob08
+    21300028: gore_TinyBlob02
+    21300030: gore_TinyBlob03
+    21300032: gore_TinyBlob04
+    21300034: gore_SmallBlob05
+    21300036: gore_SmallBlob09
+    21300038: gore_SmallBlob10
+    21300040: gore_SmallBlob11
+    21300042: gore_TinyBlob05
+    21300044: gore_TinyBlob06
+    21300046: gore_TinyBlob07
+    21300048: gore_TinyBlob09
+    21300050: gore_TinyBlob10
+    21300052: gore_TinyBlob11
+    21300054: gore_TinyBlob12
+    21300056: gore_TinyBlob13
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -24,17 +54,18 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 1
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 8
@@ -44,6 +75,296 @@ TextureImporter:
     textureFormat: -2
     compressionQuality: 50
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: gore_BigBlob01
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 57
+        width: 27
+        height: 14
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gore_BigBlob02
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 57
+        width: 23
+        height: 17
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gore_BigBlob03
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 57
+        width: 22
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gore_BigBlob04
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 57
+        width: 25
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gore_BigBlob05
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 57
+        width: 30
+        height: 21
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gore_SmallBlob01
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 28
+        width: 11
+        height: 5
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gore_TinyBlob01
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 11
+        width: 2
+        height: 3
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gore_SmallBlob02
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 29
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gore_SmallBlob03
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 29
+        width: 9
+        height: 5
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gore_SmallBlob04
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 29
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gore_SmallBlob06
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 29
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gore_TinyBlob08
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 11
+        width: 2
+        height: 1
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gore_SmallBlob07
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 29
+        width: 12
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gore_SmallBlob08
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 29
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gore_TinyBlob02
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 11
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gore_TinyBlob03
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 11
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gore_TinyBlob04
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 11
+        width: 2
+        height: 3
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gore_SmallBlob05
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 29
+        width: 11
+        height: 5
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gore_SmallBlob09
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 29
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gore_SmallBlob10
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 29
+        width: 6
+        height: 3
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gore_SmallBlob11
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 29
+        width: 4
+        height: 3
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gore_TinyBlob05
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 11
+        width: 3
+        height: 2
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gore_TinyBlob06
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 11
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gore_TinyBlob07
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 10
+        width: 3
+        height: 3
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gore_TinyBlob09
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 11
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gore_TinyBlob10
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 11
+        width: 1
+        height: 1
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gore_TinyBlob11
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 11
+        width: 1
+        height: 1
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gore_TinyBlob12
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 11
+        width: 1
+        height: 1
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: gore_TinyBlob13
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 11
+        width: 1
+        height: 1
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
