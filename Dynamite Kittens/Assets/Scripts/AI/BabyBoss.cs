@@ -1,11 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class BabyBoss : MonoBehaviour 
 {
+	public float m_RestartDelay;
+
 	bool m_BossEngaged = false;
+	bool m_BossAlive = true;
 
 	GameObject m_Player;
+
+	public List<Sprite> m_BigBlobs = new List<Sprite>();
+	public GameObject m_CorpsePiece;
 
 	public GameObject m_BossEngagement;
 	BoxCollider2D m_BossEyes;
@@ -45,7 +52,7 @@ public class BabyBoss : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if(m_BossEngaged)
+		if(m_BossEngaged && m_BossAlive)
 		{
 			m_BabyAnimator.SetBool("Attack", m_SpawnIntervalTimer <= 0.0f);
 
@@ -56,7 +63,7 @@ public class BabyBoss : MonoBehaviour
 					int rand = Random.Range(0, 3);
 					GameObject enemy = (GameObject)Instantiate(m_Enemies[rand], m_SpawnPoint.transform.position, Quaternion.identity);
 						
-					if(i == 2)
+					if(i == 2 || i == 1)
 					{
 						enemy.transform.Rotate(enemy.transform.up, 180);
 					}
@@ -69,11 +76,32 @@ public class BabyBoss : MonoBehaviour
 				m_SpawnIntervalTimer -= Time.deltaTime;
 			}
 		}
+
+		if(!m_BossAlive)
+		{
+			m_RestartDelay -= Time.deltaTime;
+			if(m_RestartDelay <= 0)
+			{
+				Application.LoadLevel(Application.loadedLevel);
+			}
+		}
 	}
 
 	public void Damage()
 	{
 		m_CurrentHealth--;
+
+		float rand = Random.Range(-2, 4);
+		GameObject particle = (GameObject)Instantiate(m_CorpsePiece, transform.position + (transform.right * rand), transform.rotation);
+		particle.GetComponent<SpriteRenderer>().sprite = m_BigBlobs[Random.Range(0, m_BigBlobs.Count)];
+		particle.AddComponent<BoxCollider2D>().isTrigger = true;
+
+		if(m_CurrentHealth <= 0)
+		{
+			m_BossAlive = false;
+			gameObject.GetComponent<BodyExplosion>().Explode();
+			Die ();
+		}
 
 		m_NumberOfHits++;
 
@@ -84,6 +112,24 @@ public class BabyBoss : MonoBehaviour
 		else
 		{
 			m_EyesAnimator.SetInteger("Hit", m_NumberOfHits - 1);
+		}
+	}
+
+	void Die()
+	{
+		for(int i = 0; i < 25; i++)
+		{
+			float rand = Random.Range(-2, 4);
+			GameObject particle = (GameObject)Instantiate(m_CorpsePiece, transform.position + (transform.right * rand), transform.rotation);
+			particle.GetComponent<SpriteRenderer>().sprite = m_BigBlobs[Random.Range(0, m_BigBlobs.Count)];
+			particle.AddComponent<BoxCollider2D>().isTrigger = true;
+		}
+
+		m_BossAlive = false;
+
+		for(int i = 0; i < transform.childCount; i++)
+		{
+			transform.GetChild(i).gameObject.SetActive(false);
 		}
 	}
 
@@ -107,9 +153,12 @@ public class BabyBoss : MonoBehaviour
 
 	void OnTriggerEnter2D (Collider2D other)
 	{
-		if(other.gameObject.tag == "Attack")
+		if(m_BossAlive)
 		{
-			Damage();
+			if(other.gameObject.tag == "Attack")
+			{
+				Damage();
+			}
 		}
 	}
 }
