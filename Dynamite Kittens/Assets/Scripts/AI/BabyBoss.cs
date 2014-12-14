@@ -32,6 +32,11 @@ public class BabyBoss : MonoBehaviour
 	public Animator m_BabyAnimator;
 	public Animator m_EyesAnimator;
 
+    public GameObject LeftEye;
+    public GameObject RightEye;
+
+    public GameObject Player;
+
 	int m_NumberOfHits = 0;
 
 	// Use this for initialization
@@ -43,6 +48,8 @@ public class BabyBoss : MonoBehaviour
 
 		m_BossEyes.center = new Vector2 (0.18f, 1.51f);
 		m_BossEyes.size = new Vector2 (2.05f, 2);
+
+        Player = GameObject.Find("Player");
 
 		m_SpawnIntervalTimer = m_SpawnIntervalTime;
 
@@ -96,6 +103,9 @@ public class BabyBoss : MonoBehaviour
 		particle.GetComponent<SpriteRenderer>().sprite = m_BigBlobs[Random.Range(0, m_BigBlobs.Count)];
 		particle.AddComponent<BoxCollider2D>().isTrigger = true;
 
+        LeftEye.GetComponent<BodyExplosion>().Explode();
+        RightEye.GetComponent<BodyExplosion>().Explode();
+
 		if(m_CurrentHealth <= 0)
 		{
 			m_BossAlive = false;
@@ -129,6 +139,7 @@ public class BabyBoss : MonoBehaviour
 
 		for(int i = 0; i < transform.childCount; i++)
 		{
+            Player.GetComponent<Apathy>().ApathyLevel += 10000;
 			transform.GetChild(i).gameObject.SetActive(false);
 		}
 	}
