@@ -32,7 +32,7 @@ public class GrenadeBunny : BaseAI
 	{
 		if(m_HopIntervalTimer <= 0)
 		{
-			rigidbody2D.AddForce(Vector2.up * m_HopHeight, ForceMode2D.Impulse);
+//			rigidbody2D.AddForce(Vector2.up * m_HopHeight, ForceMode2D.Impulse);
 			m_HopIntervalTimer = m_HopIntervalTime;
 		}
 		else
@@ -60,7 +60,7 @@ public class GrenadeBunny : BaseAI
 	
 	protected override void VirtualDamage()
 	{
-		rigidbody2D.AddForce (m_KnockBackForce, ForceMode2D.Impulse);
+	//	rigidbody2D.AddForce (m_KnockBackForce, ForceMode2D.Impulse);
 		m_CurrentState = ActionState.e_Attacking;
 	}
 }
