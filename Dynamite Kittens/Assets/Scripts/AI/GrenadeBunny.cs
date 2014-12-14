@@ -15,6 +15,7 @@ public class GrenadeBunny : BaseAI
 
 	protected override void VirtualStart()
 	{
+		m_MovementSpeed *= -1;
 		m_FuseTimer = m_FuseTime;
 	}
 
