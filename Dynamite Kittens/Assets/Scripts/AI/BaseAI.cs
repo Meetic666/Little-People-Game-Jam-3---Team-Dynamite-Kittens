@@ -275,5 +275,6 @@ public class BaseAI : MonoBehaviour
 
 		gameObject.SetActive(true);
         gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
+        m_FuseTimer = m_FuseTime;
 	}
 }
