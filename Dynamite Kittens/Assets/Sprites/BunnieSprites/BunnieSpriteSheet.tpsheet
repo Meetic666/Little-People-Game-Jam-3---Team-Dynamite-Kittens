@@ -1,0 +1,12 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# http://www.codeandweb.com/texturepacker/unity
+#
+# Sprite sheet: BunnieSpriteSheet.png (128 x 256)
+# $TexturePacker:SmartUpdate:0407f0fea1832a8c8d9c4cd1d70886e9:d5bd0b6332dcd681861c8517cc0f2c08:0ab563e25f52f22c6c7034ada6aea65c$
+#
+
+Bunnie;2;173;87;81;0.5287356321839081;0.5432098765432098
+Bunnie2;2;90;87;81;0.5287356321839081;0.5432098765432098
