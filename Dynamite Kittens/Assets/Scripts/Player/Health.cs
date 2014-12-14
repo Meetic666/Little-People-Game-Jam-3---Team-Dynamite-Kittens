@@ -75,4 +75,13 @@ public class Health : MonoBehaviour
 			break;
 		}
 	}
+
+	void OnGUI()
+	{
+		Rect rect = Camera.main.pixelRect;
+		rect.width *= 0.1f;
+		rect.height *= 0.02f;
+
+		GUI.TextArea(rect, "Health: " + m_Health + " / " + m_MaxHealth);
+	}
 }
