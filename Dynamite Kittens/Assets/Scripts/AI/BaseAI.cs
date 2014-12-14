@@ -19,6 +19,7 @@ public class BaseAI : MonoBehaviour
     public List<Sprite> m_BigBlobs = new List<Sprite>();
     public GameObject m_CorpsePiece;
     public AudioSource[] Sources = null;
+    public GameObject Player;
 
 	public List<GameObject> m_PickUpPrefabs = new List<GameObject>();
     
@@ -49,6 +50,8 @@ public class BaseAI : MonoBehaviour
 
 		m_StartPosition = transform.position;
 		m_StartRotation = transform.rotation;
+
+        Player = GameObject.Find("Player");
 
 		VirtualStart ();
 	}
@@ -109,6 +112,7 @@ public class BaseAI : MonoBehaviour
         particle.AddComponent<BoxCollider2D>().isTrigger = true;
 
         Sources[0].Play();
+        Player.GetComponent<Apathy>().ApathyLevel++;
 
 		Instantiate(m_PickUpPrefabs[Random.Range (0, m_PickUpPrefabs.Count)], transform.position + Vector3.up * 0.3f, Quaternion.identity);
 
