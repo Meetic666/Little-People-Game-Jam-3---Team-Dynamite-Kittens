@@ -68,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
 			m_Direction = -1;
 		}
 
+		m_AdditionalForce.x *= -1;
 		rigidbody2D.velocity += m_AdditionalForce;
 		m_AdditionalForce = Vector2.zero;
 	}
