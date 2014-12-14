@@ -37,7 +37,10 @@ public class DynamiteKitten : BaseAI
 			m_AttackBox.size *= m_ExplosionRangeMultiplier;
 		}
 
-		m_PlayerTarget.Damage(1);
+		if(Vector2.Distance(transform.position, m_PlayerTarget.transform.position) < 1.5f)
+		{
+			m_PlayerTarget.Damage(1);
+		}
 
 		gameObject.GetComponent<BodyExplosion> ().Explode ();
 		m_CurrentState = ActionState.e_Idle;

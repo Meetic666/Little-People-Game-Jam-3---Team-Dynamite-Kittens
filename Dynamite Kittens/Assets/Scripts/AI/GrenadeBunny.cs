@@ -54,7 +54,10 @@ public class GrenadeBunny : BaseAI
 			m_AttackBox.size *= m_ExplosionRangeMultiplier;
 		}
 
-		m_PlayerTarget.Damage(1);
+		if(Vector2.Distance(transform.position, m_PlayerTarget.transform.position) < 1)
+		{
+			m_PlayerTarget.Damage(1);
+		}
 
 		gameObject.GetComponent<BodyExplosion> ().Explode ();
 		m_CurrentState = ActionState.e_Idle;
@@ -62,7 +65,7 @@ public class GrenadeBunny : BaseAI
 	
 	protected override void VirtualDamage()
 	{
-	//	rigidbody2D.AddForce (m_KnockBackForce, ForceMode2D.Impulse);
+		rigidbody2D.AddForce (m_KnockBackForce, ForceMode2D.Impulse);
 		m_CurrentState = ActionState.e_Attacking;
 	}
 }
