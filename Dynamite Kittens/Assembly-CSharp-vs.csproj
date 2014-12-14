@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AI\BabyBoss.cs" />
      <Compile Include="Assets\Scripts\AI\BaseAI.cs" />
      <Compile Include="Assets\Scripts\AI\BodyExplosion.cs" />
      <Compile Include="Assets\Scripts\AI\DynamiteKitten.cs" />
@@ -56,12 +57,16 @@
      <Compile Include="Assets\Scripts\Animation\LevelElementAnimationManager.cs" />
      <Compile Include="Assets\Scripts\Animation\PlayerAnimationManager.cs" />
      <Compile Include="Assets\Scripts\Background\BackgroundSpawn.cs" />
+     <Compile Include="Assets\Scripts\GoreBehaviour.cs" />
      <Compile Include="Assets\Scripts\Level Elements\AnimatedPlatform.cs" />
      <Compile Include="Assets\Scripts\Level Elements\Flower.cs" />
      <Compile Include="Assets\Scripts\Level Elements\LevelElement.cs" />
      <Compile Include="Assets\Scripts\Level Elements\Platform.cs" />
-     <Compile Include="Assets\Scripts\Pick Ups\PickUp.cs" />
+     <Compile Include="Assets\Scripts\Pick Ups\BootPickUp.cs" />
+     <Compile Include="Assets\Scripts\Pick Ups\HealthPickUp.cs" />
+     <Compile Include="Assets\Scripts\Player\Apathy.cs" />
      <Compile Include="Assets\Scripts\Player\Health.cs" />
+     <Compile Include="Assets\Scripts\Player\HealthManager.cs" />
      <Compile Include="Assets\Scripts\Player\HitBox.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerCamera.cs" />
