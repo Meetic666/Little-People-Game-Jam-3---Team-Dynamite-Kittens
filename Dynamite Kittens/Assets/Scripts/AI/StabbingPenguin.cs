@@ -16,10 +16,11 @@ public class StabbingPenguin : BaseAI
 	protected override void VirtualStart()
 	{
 		m_FuseTimer = m_FuseTime;
-		m_AttackBox.center = m_SightDirection /2;
-		m_AttackBox.size = new Vector2 (1, 0.5f);
+		m_AttackBox.center = m_SightDirection;
+		m_AttackBox.size = new Vector2 (1.5f, 0.5f);
 		m_MovementSpeed *= -1;
 		m_Animator = transform.GetComponentInChildren<Animator> ();
+		m_FuseTimer = 1.5f;
 	}
 
 	protected override void VirtualUpdate()
@@ -39,7 +40,8 @@ public class StabbingPenguin : BaseAI
 	protected override void VirtualAttack()
 	{
 		m_FuseLit = true;	
-		transform.position += -transform.right * (m_MovementSpeed + m_AditionalSlidingSpeed);
+		transform.position += transform.right * (m_MovementSpeed + m_AditionalSlidingSpeed);
+		m_ChangeState = false;
 	}
 	
 	protected override void VirtualDied()
@@ -75,6 +77,8 @@ public class StabbingPenguin : BaseAI
 		{
 			m_Animator.SetBool("Walking", false);
 			m_Animator.SetBool("Sliding", true);
+			m_CurrentState = ActionState.e_Attacking;
+			m_ChangeState = false;
 		}
 	}
 

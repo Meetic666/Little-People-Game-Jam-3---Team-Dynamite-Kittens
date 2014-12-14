@@ -6,7 +6,9 @@ public class BaseAI : MonoBehaviour
 {
 	bool m_CanTurn = true;
 
-	protected float m_FuseTime = 2;
+	protected bool m_ChangeState = true;
+
+	protected float m_FuseTime = 0.8f;
 	protected float m_FuseTimer;
 
 	protected Health m_PlayerTarget;
@@ -99,7 +101,11 @@ public class BaseAI : MonoBehaviour
 	{
 		VirtualAttack ();
 
-		m_CurrentState = ActionState.e_Moving;
+		if(m_ChangeState)
+		{
+			m_CurrentState = ActionState.e_Moving;
+		}
+
 	}
 
 	void Died()
