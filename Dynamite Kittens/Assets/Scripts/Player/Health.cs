@@ -78,7 +78,7 @@ public class Health : MonoBehaviour
 	{
 		Rect rect = Camera.main.pixelRect;
 		rect.width *= 0.1f;
-		rect.height *= 0.02f;
+		rect.height *= 0.1f;
 
 		GUI.TextArea(rect, "Health: " + m_Health + " / " + m_MaxHealth);
 	}
