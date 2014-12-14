@@ -15,6 +15,8 @@ public class BaseAI : MonoBehaviour
     public List<Sprite> m_BigBlobs = new List<Sprite>();
     public GameObject m_CorpsePiece;
 
+	public List<GameObject> m_PickUpPrefabs = new List<GameObject>();
+
     private BoxCollider2D[] m_Colliders;
     private BoxCollider2D m_ChildCollider;
     
@@ -107,6 +109,8 @@ public class BaseAI : MonoBehaviour
         GameObject particle = (GameObject)Instantiate(m_CorpsePiece, transform.position, transform.rotation);
         m_CorpsePiece.GetComponent<SpriteRenderer>().sprite = m_BigBlobs[Random.Range(0, m_BigBlobs.Count)];
         //m_GorePiece.rigidbody2D.isKinematic = true;
+
+		Instantiate(m_PickUpPrefabs[Random.Range (0, m_PickUpPrefabs.Count)], transform.position + transform.up, Quaternion.identity);
 
 		VirtualDied ();
 		m_CurrentState = ActionState.e_Idle;
