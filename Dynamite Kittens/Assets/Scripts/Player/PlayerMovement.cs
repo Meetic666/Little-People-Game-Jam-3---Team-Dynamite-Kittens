@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 	public float m_Acceleration;
 	public float m_MoveSpeed;
 	public float m_JumpSpeed;
+	public int m_Direction;
 
 	PlayerInput m_Input;
 	Animator m_Animator;
@@ -56,6 +57,15 @@ public class PlayerMovement : MonoBehaviour
         }
 
 		rigidbody2D.velocity = newVelocity;
+
+		if(m_MoveSpeed > 0)
+		{
+			m_Direction = 1;
+		}
+		else if(m_MoveSpeed < 0)
+		{
+			m_Direction = -1;
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D collider)

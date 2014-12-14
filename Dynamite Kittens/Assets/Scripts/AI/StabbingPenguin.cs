@@ -64,27 +64,21 @@ public class StabbingPenguin : BaseAI
 		m_FuseLit = true;
 	}
 
-	protected override void VirtualOnTriggerEnter2D()
+	protected override void VirtualOnTriggerEnter2D(Collider2D other)
 	{
-		if(m_CurrentCollider != null)
+		if(other.gameObject.GetComponent<PlayerMovement>() != null)
 		{
-			if(m_CurrentCollider.gameObject.GetComponent<PlayerMovement>() != null)
-			{
-				m_Animator.SetBool("Walking", false);
-				m_Animator.SetBool("Sliding", true);
-			}
+			m_Animator.SetBool("Walking", false);
+			m_Animator.SetBool("Sliding", true);
 		}
 	}
 
-	protected override void VirtualOnCollisionEnter2D()
+	protected override void VirtualOnCollisionEnter2D(Collision2D other)
 	{
-		if(m_CurrentCollision != null)
+		if(other.gameObject.GetComponent<PlayerMovement>() != null)
 		{
-			if(m_CurrentCollision.gameObject.GetComponent<PlayerMovement>() != null)
-			{
-				gameObject.GetComponent<BodyExplosion> ().Explode ();
-				gameObject.SetActive(false);
-			}
+			gameObject.GetComponent<BodyExplosion> ().Explode ();
+			gameObject.SetActive(false);
 		}
 	}
 }

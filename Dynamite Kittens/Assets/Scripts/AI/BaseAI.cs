@@ -7,8 +7,7 @@ public class BaseAI : MonoBehaviour
 	bool m_IsMovingRight = true;
 	bool m_CanTurn = true;
 
-	protected Collision2D m_CurrentCollision;
-	protected Collider2D m_CurrentCollider;
+	protected Health m_PlayerTarget;
 
 	public float m_Health = 10;
 	public float m_MovementSpeed = 0.1f;
@@ -95,6 +94,8 @@ public class BaseAI : MonoBehaviour
 	void Attack()
 	{
 		VirtualAttack ();
+
+		m_CurrentState = ActionState.e_Moving;
 	}
 
 	void Died()
@@ -178,18 +179,23 @@ public class BaseAI : MonoBehaviour
 		}
 	}
 
-	protected virtual void VirtualOnCollisionEnter2D()
+	protected virtual void VirtualOnCollisionEnter2D(Collision2D other)
 	{
 
 	}
 
-	protected virtual void VirtualOnTriggerEnter2D()
+	protected virtual void VirtualOnTriggerEnter2D(Collider2D collider)
 	{
 		
 	}
 
 	void OnCollisionEnter2D(Collision2D other)
 	{
+		if(other.gameObject.GetComponent<Health>() != null)
+		{
+			m_PlayerTarget = other.gameObject.GetComponent<Health>();
+		}
+
 		if(other.gameObject.GetComponent<PlayerMovement>() != null)
 		{
 			if(m_CurrentState != ActionState.e_Idle)
@@ -202,15 +208,17 @@ public class BaseAI : MonoBehaviour
             SwitchDirection();
         }
 
-		VirtualOnCollisionEnter2D ();
-		m_CurrentCollision = null;
+		VirtualOnCollisionEnter2D (other);
 	}
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-		VirtualOnTriggerEnter2D ();
+		if(collider.gameObject.GetComponent<Health>() != null)
+		{
+			m_PlayerTarget = collider.gameObject.GetComponent<Health>();
+		}
 
-		m_CurrentCollider = null;
+		VirtualOnTriggerEnter2D (collider);
     }
 
 	void OnTriggerStay2D(Collider2D collider)

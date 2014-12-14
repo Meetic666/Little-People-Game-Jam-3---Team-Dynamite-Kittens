@@ -14,6 +14,8 @@ public class Health : MonoBehaviour
 	public int m_MaxHealth;
 	int m_Health;
 
+	public Vector2 m_KnockBackForceMax;
+
 	public int CurrentHealth
 	{
 		get
@@ -55,6 +57,8 @@ public class Health : MonoBehaviour
 		{
 			DoDeathBehaviour();
 		}
+
+		rigidbody2D.AddForce (m_KnockBackForceMax * gameObject.GetComponent<PlayerMovement> ().m_Direction, ForceMode2D.Impulse);
 	}
 
 	public void DoDeathBehaviour()
