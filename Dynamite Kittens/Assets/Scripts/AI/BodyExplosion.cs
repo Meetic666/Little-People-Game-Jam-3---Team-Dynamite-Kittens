@@ -20,7 +20,7 @@ public class BodyExplosion : MonoBehaviour
 		{
             GameObject particle = (GameObject)Instantiate(m_GoreParticle, transform.position, transform.rotation);
             particle.GetComponent<SpriteRenderer>().sprite = m_MediumGoreSprites[Random.Range(0, m_MediumGoreSprites.Count)];
-            particle.AddComponent<BoxCollider2D>();
+            particle.AddComponent<BoxCollider2D>().isTrigger = true;
 
             float x = Random.Range(-1.0f,1.0f);
             float y = Random.Range(-1.0f,1.0f);
@@ -33,7 +33,7 @@ public class BodyExplosion : MonoBehaviour
         {
             GameObject particle = (GameObject)Instantiate(m_GoreParticle, transform.position, transform.rotation);
             particle.GetComponent<SpriteRenderer>().sprite = m_TinyGoreSprites[Random.Range(0, m_MediumGoreSprites.Count)];
-            particle.AddComponent<BoxCollider2D>();
+            particle.AddComponent<BoxCollider2D>().isTrigger = true;
 
             float x = Random.Range(-1.0f, 1.0f);
             float y = Random.Range(-1.0f, 1.0f);

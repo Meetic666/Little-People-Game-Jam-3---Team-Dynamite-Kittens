@@ -10,10 +10,11 @@ public class BaseAI : MonoBehaviour
 	public float m_MovementSpeed = 0.1f;
 	public float m_JumpingSpeed = 0.3f;
     public List<Sprite> m_BigBlobs = new List<Sprite>();
+    public GameObject m_CorpsePiece;
 
     private BoxCollider2D[] m_Colliders;
     private BoxCollider2D m_ChildCollider;
-
+    
 	protected BoxCollider2D m_AttackBox;
 
 	protected ActionState m_CurrentState = ActionState.e_Moving;
@@ -90,7 +91,12 @@ public class BaseAI : MonoBehaviour
 	{
         m_ChildCollider.enabled = false;
         GetComponent<Rigidbody2D>().isKinematic = true;
-        GetComponentInChildren<SpriteRenderer>().sprite = m_BigBlobs[Random.Range(0, m_BigBlobs.Count)];
+        GetComponentInChildren<SpriteRenderer>().enabled = false;
+
+        GameObject particle = (GameObject)Instantiate(m_CorpsePiece, transform.position, transform.rotation);
+        m_CorpsePiece.GetComponent<SpriteRenderer>().sprite = m_BigBlobs[Random.Range(0, m_BigBlobs.Count)];
+        //m_GorePiece.rigidbody2D.isKinematic = true;
+
 		VirtualDied ();
 		m_CurrentState = ActionState.e_Idle;
 	}
