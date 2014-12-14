@@ -107,8 +107,8 @@ public class BaseAI : MonoBehaviour
         GetComponentInChildren<SpriteRenderer>().enabled = false;*/
 
         GameObject particle = (GameObject)Instantiate(m_CorpsePiece, transform.position, transform.rotation);
-        m_CorpsePiece.GetComponent<SpriteRenderer>().sprite = m_BigBlobs[Random.Range(0, m_BigBlobs.Count)];
-        //m_GorePiece.rigidbody2D.isKinematic = true;
+        particle.GetComponent<SpriteRenderer>().sprite = m_BigBlobs[Random.Range(0, m_BigBlobs.Count)];
+        particle.AddComponent<BoxCollider2D>().isTrigger = true;
 
 		Instantiate(m_PickUpPrefabs[Random.Range (0, m_PickUpPrefabs.Count)], transform.position + Vector3.up * 0.3f, Quaternion.identity);
 

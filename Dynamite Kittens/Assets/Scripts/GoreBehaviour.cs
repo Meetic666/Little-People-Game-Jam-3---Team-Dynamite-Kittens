@@ -30,8 +30,10 @@ public class GoreBehaviour : MonoBehaviour
         if (collider.gameObject.tag == "Level")
         {
             Rigidbody2D body = GetComponent<Rigidbody2D>();
-            body.isKinematic = true;
-            body.velocity = Vector2.zero;
+            Destroy(body);
+            GetComponent<BoxCollider2D>().enabled = false;
+            //body.isKinematic = true;
+            //body.velocity = Vector2.zero;
             m_Locked = true;
         }
     }
