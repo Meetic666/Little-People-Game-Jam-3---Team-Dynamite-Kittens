@@ -8,9 +8,10 @@ public class Apathy : MonoBehaviour {
     void OnGUI()
     {
         Rect rect = Camera.main.pixelRect;
+        float screenWidth = rect.width;
         rect.width *= 0.1f;
         rect.height *= 0.1f;
-        rect.x += rect.width;
+        rect.x = screenWidth - rect.width;
 
         GUI.TextArea(rect, "Apathy Level: " + ApathyLevel);
     }
