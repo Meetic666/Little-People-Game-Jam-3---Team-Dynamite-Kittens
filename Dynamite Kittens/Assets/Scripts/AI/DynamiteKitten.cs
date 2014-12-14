@@ -42,7 +42,7 @@ public class DynamiteKitten : BaseAI
 			m_AttackBox.size *= m_ExplosionRangeMultiplier;
 		}
 
-		if(Vector2.Distance(transform.position, m_PlayerTarget.transform.position) < 1.5f)
+		if(m_PLayerTarget != null && Vector2.Distance(transform.position, m_PlayerTarget.transform.position) < 1.5f)
 		{
 			m_PlayerTarget.Damage(1);
 		}
