@@ -70,8 +70,15 @@ public class StabbingPenguin : BaseAI
 		{
 			m_Animator.SetBool("Walking", false);
 			m_Animator.SetBool("Sliding", true);
+		}
+	}
 
-			m_CurrentState = ActionState.e_Attacking;
+	void OnCollisionEnter2D(Collision2D other)
+	{
+		if(other.gameObject.GetComponent<PlayerMovement>() != null)
+		{
+			gameObject.GetComponent<BodyExplosion> ().Explode ();
+			gameObject.SetActive(false);
 		}
 	}
 }
