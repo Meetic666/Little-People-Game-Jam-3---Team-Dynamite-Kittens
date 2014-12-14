@@ -30,7 +30,8 @@ public class DynamiteKitten : BaseAI
 
 	protected override void VirtualAttack()
 	{
-		m_FuseLit = true;	
+		m_FuseLit = true;
+        Sources[1].Play();
 	}
 
 	protected override void VirtualDied()
