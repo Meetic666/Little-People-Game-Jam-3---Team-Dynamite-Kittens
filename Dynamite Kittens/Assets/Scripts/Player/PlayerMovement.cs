@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
 	{
 		if(collider.tag == "KillVolume")
 		{
-			GetComponent<PlayerCheckpoint>().Respawn();
+			GetComponent<Health>().DoDeathBehaviour();
 		}
 	}
 }
