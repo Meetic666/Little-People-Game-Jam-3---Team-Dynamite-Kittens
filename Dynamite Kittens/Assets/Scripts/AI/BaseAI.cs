@@ -110,7 +110,7 @@ public class BaseAI : MonoBehaviour
         m_CorpsePiece.GetComponent<SpriteRenderer>().sprite = m_BigBlobs[Random.Range(0, m_BigBlobs.Count)];
         //m_GorePiece.rigidbody2D.isKinematic = true;
 
-		Instantiate(m_PickUpPrefabs[Random.Range (0, m_PickUpPrefabs.Count)], transform.position + transform.up, Quaternion.identity);
+		Instantiate(m_PickUpPrefabs[Random.Range (0, m_PickUpPrefabs.Count)], transform.position + Vector3.up * 0.3f, Quaternion.identity);
 
 		VirtualDied ();
 		m_CurrentState = ActionState.e_Idle;
