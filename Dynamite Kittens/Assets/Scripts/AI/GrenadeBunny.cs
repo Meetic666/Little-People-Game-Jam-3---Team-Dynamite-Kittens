@@ -20,6 +20,8 @@ public class GrenadeBunny : BaseAI
 
 	protected override void VirtualUpdate()
 	{
+		transform.up = Vector2.up;
+
 		if(m_FuseLit)
 		{
 			m_FuseTimer -= Time.deltaTime;

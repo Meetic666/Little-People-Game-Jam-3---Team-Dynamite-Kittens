@@ -6,6 +6,7 @@ public class PlayerCheckpoint : MonoBehaviour
 	Vector3 m_CheckpointPosition;
 
 	GameObject[] m_Enemies;
+	GameObject m_Boss;
 
 	// Use this for initialization
 	void Start () 
@@ -13,6 +14,7 @@ public class PlayerCheckpoint : MonoBehaviour
 		SetCheckpoint();
 
 		m_Enemies = GameObject.FindGameObjectsWithTag("Enemy");
+		m_Boss = GameObject.FindGameObjectWithTag ("Boss");
 	}
 
 	public void SetCheckpoint()
@@ -28,6 +30,8 @@ public class PlayerCheckpoint : MonoBehaviour
 		{
 			enemy.GetComponent<BaseAI>().Respawn();
 		}
+
+		m_Boss.GetComponent<BabyBoss> ().Respawn ();
 	}
 
 	void OnTriggerEnter2D(Collider2D collider)
