@@ -16,7 +16,7 @@ public class PlayerAttack : MonoBehaviour
 	{
 		m_Input = GetComponent<PlayerInput>();
 		m_Movement = GetComponent<PlayerMovement>();
-		m_Animator = GetComponent<Animator>();
+		m_Animator = GetComponentInChildren<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -35,7 +35,7 @@ public class PlayerAttack : MonoBehaviour
 		Vector3 offset = m_HitBoxCreationOffset;
 		Vector3 direction = transform.right;
 
-		if(m_Movement.CurrentSpeed.x < 0.0f)
+		if(transform.lossyScale.x < 0.0f)
 		{
 			offset.x *= -1;
 			direction.x *= -1;

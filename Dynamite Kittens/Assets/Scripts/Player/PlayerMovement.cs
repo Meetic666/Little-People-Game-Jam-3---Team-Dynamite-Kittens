@@ -6,31 +6,15 @@ public class PlayerMovement : MonoBehaviour
 	public float m_Acceleration;
 	public float m_MoveSpeed;
 	public float m_JumpSpeed;
-	public float m_GroundDetectionDistance;
-	public LayerMask m_GroundLayers;
-
-	Vector2 m_CurrentSpeed;
-
-	float m_Gravity = -9.81f;
-
-	bool m_IsGrounded = false;
 
 	PlayerInput m_Input;
 	Animator m_Animator;
-
-	public Vector2 CurrentSpeed
-	{
-		get
-		{
-			return m_CurrentSpeed;
-		}
-	}
 
 	// Use this for initialization
 	void Start () 
 	{
 		m_Input = GetComponent<PlayerInput>();
-		m_Animator = GetComponent<Animator>();
+		m_Animator = GetComponentInChildren<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -40,25 +24,37 @@ public class PlayerMovement : MonoBehaviour
 
 		newVelocity.x = Mathf.Lerp(newVelocity.x, m_MoveSpeed * m_Input.MoveHorizontal, m_Acceleration * Time.deltaTime);
 
-		if((transform.lossyScale.x > 0.0f && m_CurrentSpeed.x < 0.0f)
-		   || (transform.lossyScale.x < 0.0f && m_CurrentSpeed.x > 0.0f))
+		if((transform.lossyScale.x > 0.0f && rigidbody2D.velocity.x < 0.0f)
+		   || (transform.lossyScale.x < 0.0f && rigidbody2D.velocity.x > 0.0f))
 		{
 			Vector3 newScale = transform.localScale;
 			newScale.x *= -1;
 			transform.localScale = newScale;
 		}
 
-		if(Mathf.Abs (rigidbody2D.velocity.y) < 0.1f)
-		{
+		if(Mathf.Abs (newVelocity.y) < 0.1f)
+		{			
+			m_Animator.SetBool("Jump", false);
+
 			if(m_Input.Jump)
 			{
 				newVelocity.y = m_JumpSpeed;
 			}
 		}
+		else
+		{
+			m_Animator.SetBool("Jump", true);
+		}
+
+		if(Mathf.Abs (newVelocity.x) < 0.1f)
+		{			
+			m_Animator.SetBool("Walking", false);
+        }
+        else
+        {
+            m_Animator.SetBool("Walking", true);
+        }
 
 		rigidbody2D.velocity = newVelocity;
-
-		m_Animator.SetFloat("Horizontal Speed", rigidbody2D.velocity.x);
-		m_Animator.SetFloat ("Vertical Speed", rigidbody2D.velocity.y);
 	}
 }
