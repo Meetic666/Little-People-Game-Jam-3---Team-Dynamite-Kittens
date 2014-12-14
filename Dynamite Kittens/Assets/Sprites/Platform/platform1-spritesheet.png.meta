@@ -1,6 +1,23 @@
 fileFormatVersion: 2
 guid: d95e795bbc82c8d4184c455a3a425782
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: platform1-Left
+    21300002: platform1-Middle
+    21300004: platform1-Right
+    21300006: platform1-Eye_0
+    21300008: platform1-Eye_1
+    21300010: platform1-Eye_2
+    21300012: platform1-Eye_3
+    21300014: platform1-Eye_Pulsating_0
+    21300016: platform1-Eye_Pulsating_1
+    21300018: platform1-Mouth_0
+    21300020: platform1-Mouth_1
+    21300022: platform1-Mouth_2
+    21300024: platform1-Mouth_Ecstatic_0
+    21300026: platform1-Mouth_Ecstatic_1
+    21300028: platform1-Mouth_Ecstatic_2
+    21300030: platform1-Mouth_Ecstatic_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -35,6 +52,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 8
@@ -54,6 +72,7 @@ TextureImporter:
         height: 32
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: platform1-Middle
       rect:
         serializedVersion: 2
@@ -63,6 +82,7 @@ TextureImporter:
         height: 32
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: platform1-Right
       rect:
         serializedVersion: 2
@@ -72,6 +92,7 @@ TextureImporter:
         height: 32
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: platform1-Eye_0
       rect:
         serializedVersion: 2
@@ -81,6 +102,7 @@ TextureImporter:
         height: 32
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: platform1-Eye_1
       rect:
         serializedVersion: 2
@@ -90,6 +112,7 @@ TextureImporter:
         height: 32
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: platform1-Eye_2
       rect:
         serializedVersion: 2
@@ -99,6 +122,7 @@ TextureImporter:
         height: 32
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: platform1-Eye_3
       rect:
         serializedVersion: 2
@@ -108,6 +132,7 @@ TextureImporter:
         height: 32
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: platform1-Eye_Pulsating_0
       rect:
         serializedVersion: 2
@@ -117,6 +142,7 @@ TextureImporter:
         height: 32
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: platform1-Eye_Pulsating_1
       rect:
         serializedVersion: 2
@@ -126,6 +152,7 @@ TextureImporter:
         height: 32
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: platform1-Mouth_0
       rect:
         serializedVersion: 2
@@ -135,6 +162,7 @@ TextureImporter:
         height: 32
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: platform1-Mouth_1
       rect:
         serializedVersion: 2
@@ -144,6 +172,7 @@ TextureImporter:
         height: 32
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: platform1-Mouth_2
       rect:
         serializedVersion: 2
@@ -153,6 +182,7 @@ TextureImporter:
         height: 32
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: platform1-Mouth_Ecstatic_0
       rect:
         serializedVersion: 2
@@ -162,6 +192,7 @@ TextureImporter:
         height: 32
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: platform1-Mouth_Ecstatic_1
       rect:
         serializedVersion: 2
@@ -171,6 +202,7 @@ TextureImporter:
         height: 32
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: platform1-Mouth_Ecstatic_2
       rect:
         serializedVersion: 2
@@ -180,6 +212,7 @@ TextureImporter:
         height: 32
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: platform1-Mouth_Ecstatic_3
       rect:
         serializedVersion: 2
@@ -189,5 +222,6 @@ TextureImporter:
         height: 32
       alignment: 0
       pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

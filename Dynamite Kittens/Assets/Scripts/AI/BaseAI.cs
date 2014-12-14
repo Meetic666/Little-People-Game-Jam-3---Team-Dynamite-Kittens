@@ -21,6 +21,9 @@ public class BaseAI : MonoBehaviour
     
 	protected BoxCollider2D m_AttackBox;
 
+	Vector3 m_StartPosition;
+	Quaternion m_StartRotation;
+
 	protected ActionState m_CurrentState = ActionState.e_Moving;
 	protected enum ActionState
 	{
@@ -49,6 +52,9 @@ public class BaseAI : MonoBehaviour
                 m_ChildCollider = m_Colliders[i];
             }
         }
+
+		m_StartPosition = transform.position;
+		m_StartRotation = transform.rotation;
 
 		VirtualStart ();
 	}
@@ -93,9 +99,9 @@ public class BaseAI : MonoBehaviour
 
 	void Died()
 	{
-        m_ChildCollider.enabled = false;
+        /*m_ChildCollider.enabled = false;
         GetComponent<Rigidbody2D>().isKinematic = true;
-        GetComponentInChildren<SpriteRenderer>().enabled = false;
+        GetComponentInChildren<SpriteRenderer>().enabled = false;*/
 
         GameObject particle = (GameObject)Instantiate(m_CorpsePiece, transform.position, transform.rotation);
         m_CorpsePiece.GetComponent<SpriteRenderer>().sprite = m_BigBlobs[Random.Range(0, m_BigBlobs.Count)];
@@ -103,6 +109,8 @@ public class BaseAI : MonoBehaviour
 
 		VirtualDied ();
 		m_CurrentState = ActionState.e_Idle;
+
+		gameObject.SetActive (false);
 	}
 
 	void SwitchDirection ()
@@ -226,5 +234,15 @@ public class BaseAI : MonoBehaviour
 		{
 			m_CanTurn = true;
 		}
+	}
+
+	public void Respawn()
+	{
+		transform.position = m_StartPosition;
+		transform.rotation = m_StartRotation;
+
+		m_CurrentState = ActionState.e_Moving;
+
+		gameObject.SetActive(true);
 	}
 }

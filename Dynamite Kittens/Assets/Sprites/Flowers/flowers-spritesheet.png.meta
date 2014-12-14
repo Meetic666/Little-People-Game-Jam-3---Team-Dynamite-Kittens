@@ -1,6 +1,20 @@
 fileFormatVersion: 2
 guid: a33c410a75ecc0949a6e9540bc3243ae
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: flowers-Idle_0
+    21300002: flowers-Idle_1
+    21300004: flowers-Idle_2
+    21300006: flowers-Idle_3
+    21300008: flowers-Idle_4
+    21300010: flowers-Idle_5
+    21300012: flowers-Idle_6
+    21300014: flowers-Ecstatic_0
+    21300016: flowers-Ecstatic_1
+    21300018: flowers-Ecstatic_2
+    21300020: flowers-Ecstatic_3
+    21300022: flowers-Ecstatic_4
+    21300024: flowers-Ecstatic_5
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -35,6 +49,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 8
@@ -54,6 +69,7 @@ TextureImporter:
         height: 32
       alignment: 9
       pivot: {x: .449999988, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: flowers-Idle_1
       rect:
         serializedVersion: 2
@@ -63,6 +79,7 @@ TextureImporter:
         height: 33
       alignment: 9
       pivot: {x: .370000005, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: flowers-Idle_2
       rect:
         serializedVersion: 2
@@ -72,6 +89,7 @@ TextureImporter:
         height: 27
       alignment: 9
       pivot: {x: .200000003, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: flowers-Idle_3
       rect:
         serializedVersion: 2
@@ -81,6 +99,7 @@ TextureImporter:
         height: 33
       alignment: 9
       pivot: {x: .409999996, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: flowers-Idle_4
       rect:
         serializedVersion: 2
@@ -90,6 +109,7 @@ TextureImporter:
         height: 32
       alignment: 9
       pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: flowers-Idle_5
       rect:
         serializedVersion: 2
@@ -99,6 +119,7 @@ TextureImporter:
         height: 33
       alignment: 9
       pivot: {x: .589999974, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: flowers-Idle_6
       rect:
         serializedVersion: 2
@@ -108,6 +129,7 @@ TextureImporter:
         height: 27
       alignment: 9
       pivot: {x: .75999999, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: flowers-Ecstatic_0
       rect:
         serializedVersion: 2
@@ -117,6 +139,7 @@ TextureImporter:
         height: 32
       alignment: 7
       pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: flowers-Ecstatic_1
       rect:
         serializedVersion: 2
@@ -126,6 +149,7 @@ TextureImporter:
         height: 32
       alignment: 9
       pivot: {x: .550000012, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: flowers-Ecstatic_2
       rect:
         serializedVersion: 2
@@ -135,6 +159,7 @@ TextureImporter:
         height: 32
       alignment: 7
       pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: flowers-Ecstatic_3
       rect:
         serializedVersion: 2
@@ -144,6 +169,7 @@ TextureImporter:
         height: 32
       alignment: 9
       pivot: {x: .449999988, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: flowers-Ecstatic_4
       rect:
         serializedVersion: 2
@@ -153,6 +179,7 @@ TextureImporter:
         height: 32
       alignment: 7
       pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: flowers-Ecstatic_5
       rect:
         serializedVersion: 2
@@ -162,5 +189,6 @@ TextureImporter:
         height: 33
       alignment: 7
       pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

@@ -26,7 +26,7 @@ public class PlayerCheckpoint : MonoBehaviour
 
 		foreach(GameObject enemy in m_Enemies)
 		{
-			enemy.SetActive (true);
+			enemy.GetComponent<BaseAI>().Respawn();
 		}
 	}
 
