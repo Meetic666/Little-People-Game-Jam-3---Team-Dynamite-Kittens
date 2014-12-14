@@ -32,7 +32,7 @@ public class GrenadeBunny : BaseAI
 	{
 		if(m_HopIntervalTimer <= 0)
 		{
-//			rigidbody2D.AddForce(Vector2.up * m_HopHeight, ForceMode2D.Impulse);
+			rigidbody2D.AddForce(Vector2.up * m_HopHeight, ForceMode2D.Impulse);
 			m_HopIntervalTimer = m_HopIntervalTime;
 		}
 		else
@@ -53,7 +53,9 @@ public class GrenadeBunny : BaseAI
 			m_AttackBox.center = Vector3.zero;
 			m_AttackBox.size *= m_ExplosionRangeMultiplier;
 		}
-		
+
+		m_PlayerTarget.Damage(1);
+
 		gameObject.GetComponent<BodyExplosion> ().Explode ();
 		m_CurrentState = ActionState.e_Idle;
 	}

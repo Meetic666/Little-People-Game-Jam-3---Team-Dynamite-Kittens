@@ -49,7 +49,9 @@ public class StabbingPenguin : BaseAI
 			m_AttackBox.center = Vector3.zero;
 			m_AttackBox.size *= m_ExplosionRangeMultiplier;
 		}
-		
+
+		m_PlayerTarget.Damage(1);
+
 		gameObject.GetComponent<BodyExplosion> ().Explode ();
 		m_CurrentState = ActionState.e_Idle;
 	}
@@ -59,7 +61,7 @@ public class StabbingPenguin : BaseAI
 		m_Animator.SetBool("Walking", true);
 		m_Animator.SetBool("Sliding", false);
 
-		//rigidbody2D.AddForce (m_KnockBackForce, ForceMode2D.Impulse);
+		rigidbody2D.AddForce (m_KnockBackForce, ForceMode2D.Impulse);
 		m_CurrentState = ActionState.e_Idle;
 		m_FuseLit = true;
 	}
@@ -77,6 +79,8 @@ public class StabbingPenguin : BaseAI
 	{
 		if(other.gameObject.GetComponent<PlayerMovement>() != null)
 		{
+			m_PlayerTarget.Damage(1);
+
 			gameObject.GetComponent<BodyExplosion> ().Explode ();
 			gameObject.SetActive(false);
 		}
