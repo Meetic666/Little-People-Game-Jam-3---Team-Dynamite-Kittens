@@ -42,7 +42,7 @@ public class DynamiteKitten : BaseAI
 
 	protected override void VirtualDamage()
 	{
-		//rigidbody2D.AddForce (m_KnockBackForce, ForceMode2D.Impulse);
+		rigidbody2D.AddForce (m_KnockBackForce, ForceMode2D.Impulse);
 		m_CurrentState = ActionState.e_Attacking;
 	}
 }

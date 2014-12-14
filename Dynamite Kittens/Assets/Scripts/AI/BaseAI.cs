@@ -93,7 +93,7 @@ public class BaseAI : MonoBehaviour
         GetComponent<Rigidbody2D>().isKinematic = true;
         GetComponentInChildren<SpriteRenderer>().enabled = false;
 
-        GameObject particle = (GameObject)Instantiate(m_CorpsePiece, transform.position, transform.rotation);
+        GameObject particle = (GameObject)Instantiate(m_CorpsePiece, transform.position, Quaternion.identity);
         m_CorpsePiece.GetComponent<SpriteRenderer>().sprite = m_BigBlobs[Random.Range(0, m_BigBlobs.Count)];
         //m_GorePiece.rigidbody2D.isKinematic = true;
 
