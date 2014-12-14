@@ -40,12 +40,6 @@ public class Health : MonoBehaviour
 	{
 		m_Health = m_MaxHealth;
 	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-	
-	}
 
 	public void Damage(int damageAmount)
 	{
@@ -72,14 +66,5 @@ public class Health : MonoBehaviour
 			GetComponent<PlayerCheckpoint>().Respawn ();
 			break;
 		}
-	}
-
-	void OnGUI()
-	{
-		Rect rect = Camera.main.pixelRect;
-		rect.width *= 0.1f;
-		rect.height *= 0.1f;
-
-		GUI.TextArea(rect, "Health: " + m_Health + " / " + m_MaxHealth);
 	}
 }
