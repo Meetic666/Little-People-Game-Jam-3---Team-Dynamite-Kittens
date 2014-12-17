@@ -4,7 +4,6 @@ using System.Collections;
 [RequireComponent(typeof(BodyExplosion))]
 public class DynamiteKitten : BaseAI 
 {
-	bool m_FuseLit = false;
 	public Vector2 m_KnockBackForce;
 
 	public float m_ExplosionRangeMultiplier = 2;
@@ -16,22 +15,25 @@ public class DynamiteKitten : BaseAI
 
 	protected override void VirtualUpdate()
 	{
-		if(m_FuseLit)
+		if(m_FuseHasBeenLit)
 		{
 			m_FuseTimer -= Time.deltaTime;
 
 			if(m_FuseTimer <= 0)
 			{
 				m_CurrentState = ActionState.e_Dead;
-				m_FuseLit = false;
+				m_FuseHasBeenLit = false;
 			}
 		}
 	}
 
 	protected override void VirtualAttack()
 	{
-		m_FuseLit = true;
-        Sources[1].Play();
+        if (m_FuseHasBeenLit == false)
+        {
+            m_FuseHasBeenLit = true;
+            Sources[1].Play();
+        }	
 	}
 
 	protected override void VirtualDied()

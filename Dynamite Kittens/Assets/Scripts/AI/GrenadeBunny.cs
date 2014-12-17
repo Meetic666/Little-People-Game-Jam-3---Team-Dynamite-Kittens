@@ -4,8 +4,6 @@ using System.Collections;
 [RequireComponent(typeof(BodyExplosion))]
 public class GrenadeBunny : BaseAI 
 {
-	bool m_FuseLit = false;
-
 	public float m_HopHeight;
 	public float m_HopIntervalTime;
 	float m_HopIntervalTimer = 0;
@@ -23,14 +21,14 @@ public class GrenadeBunny : BaseAI
 	{
 		transform.up = Vector2.up;
 
-		if(m_FuseLit)
+		if(m_FuseHasBeenLit)
 		{
 			m_FuseTimer -= Time.deltaTime;
 			
 			if(m_FuseTimer <= 0)
 			{
 				m_CurrentState = ActionState.e_Dead;
-				m_FuseLit = false;
+				m_FuseHasBeenLit = false;
 			}
 		}
 	}
@@ -50,7 +48,10 @@ public class GrenadeBunny : BaseAI
 
 	protected override void VirtualAttack()
 	{
-		m_FuseLit = true;	
+        if (m_FuseHasBeenLit == false)
+        {
+            m_FuseHasBeenLit = true;
+        }
 	}
 	
 	protected override void VirtualDied()

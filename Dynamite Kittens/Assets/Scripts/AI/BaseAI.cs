@@ -10,7 +10,8 @@ public class BaseAI : MonoBehaviour
 
 	protected float m_FuseTime = 0.8f;
 	protected float m_FuseTimer;
-
+    protected bool m_FuseHasBeenLit = false;
+    protected BoxCollider2D m_AttackBox;
 	protected Health m_PlayerTarget;
 
 	public float m_Health = 10;
@@ -21,9 +22,12 @@ public class BaseAI : MonoBehaviour
     public AudioSource[] Sources = null;
     public GameObject Player;
 
+    public bool hitEdge = false;
+
 	public List<GameObject> m_PickUpPrefabs = new List<GameObject>();
-    
-	protected BoxCollider2D m_AttackBox;
+
+    private BoxCollider2D[] m_Colliders;
+    private BoxCollider2D m_HitCollider;
 
 	Vector3 m_StartPosition;
 	Quaternion m_StartRotation;
@@ -44,12 +48,15 @@ public class BaseAI : MonoBehaviour
 
 	void Start()
 	{
-		//gameObject.AddComponent<BoxCollider2D>();
-		m_AttackBox = gameObject.GetComponent<BoxCollider2D> ();
-		m_AttackBox.isTrigger = true;
-
 		m_StartPosition = transform.position;
 		m_StartRotation = transform.rotation;
+
+        m_Colliders = GetComponents<BoxCollider2D>();
+        for (int i = 0; i < m_Colliders.Length; i++)
+        {
+            if (m_Colliders[i].isTrigger == false) { m_HitCollider = m_Colliders[i]; }
+            if (m_Colliders[i].isTrigger == true) { m_AttackBox = m_Colliders[i]; }
+        }
 
         Player = GameObject.Find("Player");
 
@@ -91,20 +98,18 @@ public class BaseAI : MonoBehaviour
 
 	void Attack()
 	{
-        //Sources[1].Play();
 		VirtualAttack ();
 
 		if(m_ChangeState)
 		{
 			m_CurrentState = ActionState.e_Moving;
 		}
-
 	}
 
 	void Died()
 	{
-        //m_ChildCollider.enabled = false;
-        //GetComponent<Rigidbody2D>().isKinematic = true;
+        m_HitCollider.enabled = false;
+        
         GetComponentInChildren<SpriteRenderer>().enabled = false;
 
         GameObject particle = (GameObject)Instantiate(m_CorpsePiece, transform.position, transform.rotation);
@@ -116,8 +121,11 @@ public class BaseAI : MonoBehaviour
 
 		Instantiate(m_PickUpPrefabs[Random.Range (0, m_PickUpPrefabs.Count)], transform.position + Vector3.up * 0.3f, Quaternion.identity);
 
-		VirtualDied ();
+        VirtualDied();
 
+        m_AttackBox.size = new Vector2(1, 1);
+        m_AttackBox.enabled = false;
+        
 		m_CurrentState = ActionState.e_Idle;
 		
 		WaitForSoundEffect();
@@ -225,10 +233,11 @@ public class BaseAI : MonoBehaviour
 				m_CurrentState = ActionState.e_Attacking;
 			}
 		}
-        else if (other.gameObject.tag == "Edge")
-        {
-            SwitchDirection();
-        }
+
+        //if (other.gameObject.tag == "Edge")
+        //{
+        //    SwitchDirection();
+        //}
 
 		VirtualOnCollisionEnter2D (other);
 	}
@@ -240,31 +249,36 @@ public class BaseAI : MonoBehaviour
 			m_PlayerTarget = collider.gameObject.GetComponent<Health>();
 		}
 
+        //if (collider.gameObject.tag == "Edge")
+        //{
+        //    SwitchDirection();
+        //}
+
 		VirtualOnTriggerEnter2D (collider);
     }
 
-	void OnTriggerStay2D(Collider2D collider)
-	{
-		if(m_CanTurn)
-		{
-			if (collider.gameObject.tag == "Edge")
-			{
-				if(Vector2.Distance(transform.position, collider.transform.position) <= 1)
-				{
-					SwitchDirection();
-					m_CanTurn = false;
-				}
-			}
-		}
-	}
+    void OnTriggerStay2D(Collider2D collider)
+    {
+        if (m_CanTurn)
+        {
+            if (collider.gameObject.tag == "Edge")
+            {
+                if (Vector2.Distance(transform.position, collider.transform.position) <= 1)
+                {
+                    SwitchDirection();
+                    m_CanTurn = false;
+                }
+            }
+        }
+    }
 
-	void OnTriggerExit2D(Collider2D collider)
-	{
-		if(collider.tag == "Edge")
-		{
-			m_CanTurn = true;
-		}
-	}
+    void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.tag == "Edge")
+        {
+            m_CanTurn = true;
+        }
+    }
 
 	public void Respawn()
 	{
@@ -275,6 +289,8 @@ public class BaseAI : MonoBehaviour
 
 		gameObject.SetActive(true);
         gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
+        m_HitCollider.enabled = true;
+        m_AttackBox.enabled = true;
         m_FuseTimer = m_FuseTime;
 	}
 }
